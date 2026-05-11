@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="FMG Repository Development Bible — Estándares de ingeniería para todos los repositorios de Fearless Media Group.">
+<meta property="og:title" content="FMG Repository Development Bible">
+<meta property="og:description" content="Logic dictates. AI executes. Estándares técnicos definitivos para creación y mantenimiento de repositorios FMG.">
+<title>FMG Repository Bible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0d0d0d;
+  --bg2:     #141414;
+  --bg3:     #1c1c1c;
+  --border:  #252525;
+  --border2: #333;
+  --text:    #e8e4dc;
+  --text2:   #9a9590;
+  --text3:   #555048;
+  --gold:    #c8a96e;
+  --green:   #8fbc8f;
+  --blue:    #7a9ec8;
+  --red:     #c87a7a;
+  --mono:    'IBM Plex Mono', monospace;
+  --sans:    'IBM Plex Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.brand-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.brand-title {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.header-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+}
+
+/* ── HERO ── */
+.hero {
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 2rem 3.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.hero-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.hero-title span {
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: var(--text2);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 8px 18px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.15s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: #0d0d0d;
+  font-weight: 600;
+}
+
+.btn-primary:hover { background: #d4b87a; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text2);
+  border: 1px solid var(--border2);
+}
+
+.btn-ghost:hover { background: var(--bg3); color: var(--text); }
+
+/* ── NAV TABS ── */
+.nav-bar {
+  position: sticky;
+  top: 52px;
+  z-index: 190;
+  background: rgba(13,13,13,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-bar::-webkit-scrollbar { display: none; }
+
+.nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 2rem;
+}
+
+.nav-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text3);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 16px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  margin-bottom: -1px;
+}
+
+.nav-tab:hover { color: var(--text2); }
+.nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── CONTENT ── */
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 5rem;
+}
+
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── SECTIONS ── */
+.section {
+  margin-bottom: 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  cursor: pointer;
+  background: var(--bg2);
+  transition: background 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.section-header:hover { background: var(--bg3); }
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  min-width: 30px;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  flex: 1;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.tag-law  { background: rgba(200,169,110,0.12); color: var(--gold); }
+.tag-sop  { background: rgba(143,188,143,0.12); color: var(--green); }
+.tag-ref  { background: rgba(122,158,200,0.12); color: var(--blue); }
+.tag-cc   { background: rgba(200,122,122,0.12); color: var(--red); }
+
+.chevron {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text3);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.section.open .chevron { transform: rotate(180deg); }
+
+.section-body {
+  display: none;
+  padding: 1.5rem 1.25rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.section.open .section-body { display: block; }
+
+/* ── CONTENT ELEMENTS ── */
+h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 1.5rem 0 0.75rem;
+}
+
+h3:first-child { margin-top: 0; }
+
+p {
+  color: var(--text2);
+  font-size: 13.5px;
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+p:last-child { margin-bottom: 0; }
+
+.callout {
+  border-left: 2px solid var(--gold);
+  background: rgba(200,169,110,0.05);
+  padding: 0.75rem 1rem;
+  margin: 0.875rem 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.callout-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.callout p { margin: 0; color: var(--text); font-size: 13px; }
+
+.callout-red { border-left-color: var(--red); background: rgba(200,122,122,0.05); }
+.callout-red .callout-label { color: var(--red); }
+
+.callout-green { border-left-color: var(--green); background: rgba(143,188,143,0.05); }
+.callout-green .callout-label { color: var(--green); }
+
+pre {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 0.875rem 0;
+}
+
+pre code {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.9;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: var(--bg2);
+  color: var(--green);
+  padding: 1px 5px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+.table-wrap { overflow-x: auto; margin: 0.875rem 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+th {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  padding: 7px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border2);
+}
+
+td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+tr:last-child td { border-bottom: none; }
+td:first-child { font-family: var(--mono); font-size: 12px; color: var(--text); }
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0.875rem 0;
+}
+
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.1rem;
+}
+
+.card-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.card-value {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.card-value code { font-size: 11px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 5px; margin: 0.5rem 0; }
+
+.chip {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
+
+.chip-gold  { background: rgba(200,169,110,0.12); color: var(--gold); }
+.chip-green { background: rgba(143,188,143,0.12); color: var(--green); }
+.chip-red   { background: rgba(200,122,122,0.12); color: var(--red); }
+
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 1.25rem 0; }
+
+/* ── CHECKLIST ── */
+.checklist { list-style: none; margin: 0.5rem 0; }
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.cb {
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--border2);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  transition: all 0.12s;
+  font-family: var(--mono);
+}
+
+.cb.done { background: var(--green); border-color: var(--green); color: #0d0d0d; font-weight: 700; }
+
+/* ── PAGE TITLE ── */
+.page-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+}
+
+.site-footer p {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .hero { padding: 2.5rem 1.25rem 2rem; }
+  .content { padding: 1.5rem 1.25rem 4rem; }
+  .grid2 { grid-template-columns: 1fr; }
+  .hero-title { font-size: 26px; }
+  .site-header { padding: 0 1.25rem; }
+  .nav-inner { padding: 0 1.25rem; }
+  .header-meta { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <div class="header-brand">
+    <span class="brand-label">FMG /</span>
+    <span class="brand-title">Repo Bible</span>
+  </div>
+  <span class="header-meta">v1.0.0 · 2026-05-10</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Fearless Media Group · AI-Ready Engineering</div>
+  <h1 class="hero-title">FMG Standard<br><span>Repo & Template</span></h1>
+  <p class="hero-sub">
+    La autoridad técnica definitiva y el boilerplate obligatorio para el desarrollo moderno asistido por IA. Estándares que dictan, IA que ejecuta.
+  </p>
+  <div class="hero-actions">
+    <button class="btn btn-primary" onclick="showPage('template', document.querySelector('[data-page=template]'))">🚀 Usar Template</button>
+    <a class="btn btn-ghost" href="FMG-REPO-BIBLE.md">📖 Biblia (.md)</a>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <button class="nav-tab active" onclick="showPage('estructura',this)">01 Estructura</button>
+    <button class="nav-tab" onclick="showPage('git',this)">02 Git</button>
+    <button class="nav-tab" onclick="showPage('docs',this)">03 Docs</button>
+    <button class="nav-tab" onclick="showPage('agentes',this)">04 Agentes IA</button>
+    <button class="nav-tab" data-page="template" onclick="showPage('template',this)">05 Template</button>
+    <button class="nav-tab" onclick="showPage('checklist',this)">06 Checklists</button>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="content">
+
+<!-- ══════ PAGE 05: TEMPLATE ══════ -->
+<div id="page-template" class="page">
+  <div class="page-title">05 · FMG Repository Template</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.1</span>
+      <span class="section-title">¿Qué es el Template?</span>
+      <span class="tag tag-ref">REF</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <p>Es el andamiaje físico del estándar FMG. No es solo documentación; es un directorio listo para ser copiado que contiene la <strong>Anatomía Mínima Obligatoria</strong>.</p>
+      <div class="callout">
+        <span class="callout-label">Ubicación</span>
+        <p>El template se encuentra en el directorio <code>/template</code> de este repositorio.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.2</span>
+      <span class="section-title">Contenido del Boilerplate</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Archivo/Carpeta</th><th>Propósito</th></tr></thead>
+          <tbody>
+            <tr><td><code>/src</code></td><td>Código fuente inicial (Placeholder).</td></tr>
+            <tr><td><code>/docs/wiki</code></td><td>Estructura base de la wiki técnica.</td></tr>
+            <tr><td><code>/docs/AGENT.md</code></td><td>SOP para agentes IA.</td></tr>
+            <tr><td><code>/docs/GEMINI.md</code></td><td>Reglas específicas para Gemini CLI.</td></tr>
+            <tr><td><code>README.md</code></td><td>Template de contrato público del proyecto.</td></tr>
+            <tr><td><code>CHANGELOG.md</code></td><td>Historial siguiendo Keep a Changelog.</td></tr>
+            <tr><td><code>.gitignore</code></td><td>Hardened gitignore para evitar leaks.</td></tr>
+            <tr><td><code>VERSION</code></td><td>Fuente única de verdad de la versión.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.3</span>
+      <span class="section-title">Guía de Inicio Rápido</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ol>
+        <li>Clona este repositorio o descarga la carpeta <code>/template</code>.</li>
+        <li>Copia el contenido de <code>/template</code> a la raíz de tu nuevo proyecto.</li>
+        <li>Ejecuta <code>git init</code>.</li>
+        <li>Personaliza el <code>README.md</code> y <code>docs/SOUL.md</code>.</li>
+        <li>Inicia tu primer commit como <code>feat: initial repository setup from FMG template</code>.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 06: CC STANDARD ══════ -->
+<div id="page-cc" class="page">
+
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">1.1</span>
+      <span class="section-title">Anatomía Mínima Obligatoria</span>
+      <span class="tag tag-law">LEY</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <p>Todo repositorio FMG existe desde el día uno con esta estructura. No es opcional.</p>
+      <pre><code>repo-root/
+├── README.md          ← Contrato público del proyecto
+├── CHANGELOG.md       ← Historial versionado de cambios
+├── LICENSE            ← Tipo de licencia declarado
+├── .gitignore         ← Hardened desde el día uno
+├── VERSION            ← Fuente única de verdad de la versión
+├── docs/
+│   └── wiki/
+│       ├── index.md   ← Home de la wiki
+│       └── *.md       ← Guías por dominio
+└── src/               ← Código fuente</code></pre>
+      <div class="callout">
+        <span class="callout-label">Ley de Completitud</span>
+        <p>Un repo sin README, CHANGELOG o .gitignore configurado no es un repo. Es un directorio con deuda.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">1.2</span>
+      <span class="section-title">Estructura del README</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <p>El README es la interfaz pública del proyecto. Define en 30 segundos qué es, qué hace y cómo se usa.</p>
+      <pre><code># Nombre del Proyecto
+
+> Tagline de una línea. Qué hace. Para quién.
+
+![version]  ![license]  ![status]
+
+## Qué es
+Descripción técnica concisa. Sin marketing.
+
+## Instalación
+Comandos exactos. Copy-paste funcional.
+
+## Uso
+Ejemplo mínimo que funciona.
+
+## Arquitectura (opcional)
+Diagrama o descripción de componentes clave.
+
+## Changelog
+Link a CHANGELOG.md
+
+## Licencia
+Tipo + link.</code></pre>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Elemento</th><th>Regla</th><th>Límite</th></tr></thead>
+          <tbody>
+            <tr><td># H1</td><td>Una instancia, igual al nombre del repo</td><td>60 chars</td></tr>
+            <tr><td>## H2</td><td>Obligatorio post-H1. Sin numerar.</td><td>40 chars</td></tr>
+            <tr><td>### H3</td><td>Solo cuando H2 requiere subdivisión real</td><td>40 chars</td></tr>
+            <tr><td>Badges</td><td>Solo informativos. No decoration.</td><td>≤5</td></tr>
+            <tr><td>Links</td><td>Relativos con extensión: <code>./docs/wiki/index.md</code></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-red">
+        <span class="callout-label">Prohibido</span>
+        <p>Screenshots decorativos, GIFs de marketing, listas de features sin ejemplos de código, secciones vacías "coming soon".</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">1.3</span>
+      <span class="section-title">Estructura de la Wiki (docs/wiki/)</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <p>La wiki documenta el <em>por qué</em> y el <em>cómo</em>. El README documenta el <em>qué</em>. No se mezclan.</p>
+      <pre><code>docs/wiki/
+├── index.md           ← TOC + Overview
+├── architecture.md    ← Decisiones de diseño, ADRs
+├── development.md     ← Setup local, flujo de contribución
+├── agent-sop.md       ← SOP para agentes IA (OBLIGATORIO)
+├── hygiene.md         ← Git hygiene, branching, releases
+└── [domain].md        ← Un archivo por dominio</code></pre>
+      <div class="callout">
+        <span class="callout-label">Ley de Cohesión</span>
+        <p>Cada archivo wiki tiene un único dominio de responsabilidad. Si no puedes describir el archivo en 5 palabras, está haciendo demasiado.</p>
+      </div>
+      <h3>Tono — Autoridad Técnica Absoluta</h3>
+      <div class="chips">
+        <span class="chip chip-green">✓ "El sistema exige cargo check antes de commit"</span>
+        <span class="chip chip-red">✗ "Se recomienda ejecutar cargo check"</span>
+      </div>
+      <div class="chips">
+        <span class="chip chip-green">✓ "PoshBuddy garantiza compilación limpia"</span>
+        <span class="chip chip-red">✗ "PoshBuddy intenta mantener compilación limpia"</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">1.4</span>
+      <span class="section-title">Hardening del .gitignore</span>
+      <span class="tag tag-law">LEY</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <p>Se configura en el commit inicial. No es un documento que se edita "cuando hay problema".</p>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-label">Siempre excluir</div>
+          <div class="card-value">
+            <code>*.log</code> · <code>*.tmp</code> · <code>*.bak</code><br>
+            <code>.env*</code> · <code>*.local</code><br>
+            <code>cargo_*.txt</code> · <code>debug_*.txt</code><br>
+            <code>.manifests/</code> · <code>node_modules/</code><br>
+            <code>__pycache__/</code> · <code>target/</code><br>
+            <code>dist/</code> · <code>build/</code> · <code>.DS_Store</code>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-label">Nunca trackear</div>
+          <div class="card-value">
+            Credenciales · API keys<br>
+            Archivos de sesión personal<br>
+            Output de builds locales<br>
+            Symlinks a rutas absolutas<br>
+            IDE configs personales<br>
+            <code>.vscode/settings.json</code>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Protocolo</span>
+        <p>Antes de cada commit: <code>git status</code> completo. Si aparece algo inesperado, se agrega al .gitignore antes de continuar.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">1.5</span>
+      <span class="section-title">Licencias y Metadata del Repo</span>
+      <span class="tag tag-ref">REF</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Caso de Uso</th><th>Licencia</th></tr></thead>
+          <tbody>
+            <tr><td>Herramientas FOSS</td><td>MIT o Apache 2.0</td></tr>
+            <tr><td>Librerías con atribución</td><td>MIT</td></tr>
+            <tr><td>Proyectos FMG internos</td><td>Propietaria / All Rights Reserved</td></tr>
+            <tr><td>Plugins de OSS existente</td><td>Misma licencia del proyecto padre</td></tr>
+            <tr><td>Contenido educativo / docs</td><td>CC BY 4.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>GitHub Topics configurados desde el inicio. Mínimo 3 topics relevantes. La descripción del repo en GitHub replica exactamente el tagline del README.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 02: GIT ══════ -->
+<div id="page-git" class="page">
+  <div class="page-title">02 · Git: Commits, Versiones e Higiene</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">2.1</span>
+      <span class="section-title">Anatomía de un Commit Atómico</span>
+      <span class="tag tag-law">LEY</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Regla de Oro</span>
+        <p>Una feature = un commit. Un bugfix = un commit. Un refactor = un commit separado. Docs = un commit separado. Version bump = un commit separado.</p>
+      </div>
+      <h3>Formato Conventional Commits</h3>
+      <pre><code>&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+
+&lt;body — QUÉ y POR QUÉ, no CÓMO. 72 chars/línea.&gt;
+
+&lt;footer — Fixes #123 / BREAKING CHANGE: ...&gt;</code></pre>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tipo</th><th>Dominio</th><th>SemVer</th></tr></thead>
+          <tbody>
+            <tr><td>feat</td><td>Nueva funcionalidad</td><td>MINOR</td></tr>
+            <tr><td>fix</td><td>Corrección de bug</td><td>PATCH</td></tr>
+            <tr><td>perf</td><td>Optimización de rendimiento</td><td>PATCH</td></tr>
+            <tr><td>refactor</td><td>Reorganización sin cambio funcional</td><td>NONE</td></tr>
+            <tr><td>docs</td><td>Documentación, wiki, README</td><td>NONE</td></tr>
+            <tr><td>style</td><td>UI/visual sin cambio de lógica</td><td>NONE</td></tr>
+            <tr><td>test</td><td>Tests nuevos o reparados</td><td>NONE</td></tr>
+            <tr><td>chore</td><td>Deps, config, release bumps</td><td>NONE</td></tr>
+            <tr><td>ci</td><td>CI/CD pipeline changes</td><td>NONE</td></tr>
+            <tr><td>BREAKING CHANGE</td><td>API incompatible</td><td>MAJOR</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Subject: imperativo, minúscula, ≤50 chars, sin punto final. Scope en minúscula: <code>(cli)</code>, <code>(parser)</code>, <code>(auth)</code>.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">2.2</span>
+      <span class="section-title">Versionado Semántico (SemVer)</span>
+      <span class="tag tag-law">LEY</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Componente</th><th>Cuándo</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td>MAJOR</td><td>Breaking changes. API incompatible.</td><td>1.2.3 → 2.0.0</td></tr>
+            <tr><td>MINOR</td><td>Nueva funcionalidad compatible.</td><td>1.2.3 → 1.3.0</td></tr>
+            <tr><td>PATCH</td><td>Bugfixes. Security patches. Perf.</td><td>1.2.3 → 1.2.4</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Ley de Unicidad de Fuente</span>
+        <p>La versión en el manifest del proyecto (<code>Cargo.toml</code>, <code>pyproject.toml</code>, <code>package.json</code>, <code>VERSION</code>) DEBE coincidir exactamente con el último tag de Git y la entrada superior del CHANGELOG. Tres fuentes, un número.</p>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Ley de Mayor Impacto</span>
+        <p>Si hay un <code>feat</code> y un <code>fix</code> en el mismo lote, el incremento es MINOR. La regla de mayor impacto prevalece siempre.</p>
+      </div>
+      <h3>Flujo de Version Bump</h3>
+      <pre><code># 1. Revisar commits desde último tag
+git log --oneline vX.Y.Z..HEAD
+
+# 2. Actualizar archivo de versión
+echo "1.3.0" > VERSION
+
+# 3. Commit de versión
+git add VERSION
+git commit -m "chore(release): bump version to 1.3.0"
+
+# 4. Actualizar CHANGELOG y commitearlo
+git add CHANGELOG.md
+git commit -m "docs(changelog): update for v1.3.0"
+
+# 5. Tag anotado
+git tag -a v1.3.0 -m "Release v1.3.0"
+
+# 6. Push completo
+git push origin main
+git push origin v1.3.0</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">2.3</span>
+      <span class="section-title">CHANGELOG: Estructura y Protocolo</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <pre><code># Changelog
+
+## [Unreleased]
+
+## [1.3.0] - 2026-05-10
+
+### Added
+- UVR stem separation pipeline via --stems flag
+
+### Fixed
+- Bridge protocol no longer silently discards audio bytes
+
+### Changed
+- Parser refactored into discrete state machine methods
+
+## [1.2.3] - 2026-04-01
+...</code></pre>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sección</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td>Added</td><td>Funcionalidad nueva</td></tr>
+            <tr><td>Changed</td><td>Cambios en funcionalidad existente</td></tr>
+            <tr><td>Deprecated</td><td>Features que serán eliminadas</td></tr>
+            <tr><td>Removed</td><td>Features eliminadas</td></tr>
+            <tr><td>Fixed</td><td>Bug fixes</td></tr>
+            <tr><td>Security</td><td>Patches de seguridad</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-red">
+        <span class="callout-label">Prohibido</span>
+        <p>Entradas genéricas como "Various fixes" o "Code improvements". Cada entrada describe un cambio concreto y user-facing.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">2.4</span>
+      <span class="section-title">Higiene de Ramas</span>
+      <span class="tag tag-law">LEY</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-label">Ramas permanentes</div>
+          <div class="card-value"><code>main</code> — producción estable<br><code>dev</code> — integración (si aplica)<br>Solo ramas explícitamente aprobadas</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Ramas temporales</div>
+          <div class="card-value"><code>feat/nombre-corto</code><br><code>fix/descripcion-bug</code><br><code>refactor/componente</code><br>Eliminar inmediato post-merge</div>
+        </div>
+      </div>
+      <h3>Protocolo de Limpieza Post-Merge</h3>
+      <pre><code>git branch -d feat/mi-feature
+git push origin --delete feat/mi-feature
+git remote prune origin
+git branch -a</code></pre>
+      <div class="callout callout-red">
+        <span class="callout-label">Anti-Force</span>
+        <p>Prohibido <code>git push --force</code> a <code>main</code>. Único caso permitido: rama de feature aislada, bajo justificación extrema documentada.</p>
+      </div>
+      <div class="callout callout-red">
+        <span class="callout-label">Anti-Merge Commit</span>
+        <p>Historial lineal obligatorio en <code>main</code>. Usar <code>git pull --rebase</code> siempre. En ramas compartidas: <code>git merge</code>. Nunca <code>git pull</code> sin <code>--rebase</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">2.5</span>
+      <span class="section-title">Protocolo Pre-Push Completo</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <pre><code># 1. Working tree limpio
+git status
+
+# 2. Revisar commits a subir
+git log --oneline origin/main..HEAD
+
+# 3. ¿Atómicos? ¿Mensajes correctos?
+git rebase -i origin/main   # Si no
+
+# 4. Compilación exitosa
+cargo check / python -m py_compile / npm run build
+
+# 5. Tests
+cargo test / pytest / npm test
+
+# 6. Segunda revisión de status
+git status
+
+# 7. Push
+git push origin main
+git push origin vX.Y.Z</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">2.6</span>
+      <span class="section-title">Trampas Comunes y Recuperación</span>
+      <span class="tag tag-ref">REF</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Trampa</th><th>Síntoma</th><th>Solución</th></tr></thead>
+          <tbody>
+            <tr><td>Merge commit en main</td><td><code>Merge branch 'X'</code> en log</td><td><code>git rebase -i origin/main</code> → drop</td></tr>
+            <tr><td>Tag olvidado</td><td>Release sin tag</td><td><code>git tag -a vX.Y.Z && git push origin vX.Y.Z</code></td></tr>
+            <tr><td>Versión inconsistente</td><td>VERSION ≠ tag ≠ CHANGELOG</td><td>Commit corrector. Tag apunta al fix.</td></tr>
+            <tr><td>Tag sin push</td><td>Tag local, no remoto</td><td><code>git push origin --tags</code></td></tr>
+            <tr><td>Rebase en rama compartida</td><td>Historial divergente</td><td>Nunca rebase en shared branches.</td></tr>
+            <tr><td>Archivos filtrados en staging</td><td><code>.env</code> en status</td><td><code>git rm --cached .env</code> → .gitignore</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 03: DOCS ══════ -->
+<div id="page-docs" class="page">
+  <div class="page-title">03 · Documentación: Estándares y Formato</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">3.1</span>
+      <span class="section-title">Estándares de Markdown</span>
+      <span class="tag tag-law">LEY</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Elemento</th><th>Regla</th><th>Límite</th></tr></thead>
+          <tbody>
+            <tr><td># H1</td><td>Una instancia por archivo</td><td>60 chars</td></tr>
+            <tr><td>## H2</td><td>Secciones principales. Sin numerar.</td><td>40 chars</td></tr>
+            <tr><td>### H3</td><td>Solo subdivisión necesaria</td><td>40 chars</td></tr>
+            <tr><td>Alertas</td><td>Max 2 por sección. Nunca consecutivas.</td><td>—</td></tr>
+            <tr><td>Links</td><td>Relativos con extensión. Nunca <code>file:///</code></td><td>—</td></tr>
+            <tr><td>Code blocks</td><td>Language tag siempre: ```bash, ```rust</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-red">
+        <span class="callout-label">Léxico Prohibido</span>
+        <p>"Creo que..." · "Podría..." · "Tal vez..." · "Basado en mi análisis..." · "Se recomienda..." · "[X] intenta..." cuando se puede usar "[X] garantiza..."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">3.2</span>
+      <span class="section-title">Diagramas con Mermaid</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tipo</th><th>Formato</th></tr></thead>
+          <tbody>
+            <tr><td>Flujos de estado</td><td><code>stateDiagram-v2</code></td></tr>
+            <tr><td>Dependencias / arquitectura</td><td><code>graph TD</code> o <code>graph LR</code></td></tr>
+            <tr><td>Secuencias</td><td><code>sequenceDiagram</code></td></tr>
+            <tr><td>Timelines</td><td><code>timeline</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <span class="callout-label">Nomenclatura</span>
+        <p>Nodos en <code>PascalCase</code>. Flechas con verbos en infinitivo: <code>--> |Download|</code>, <code>--> |Validate|</code>. Diagramas son máquinas de estado puras, no arte.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">3.3</span>
+      <span class="section-title">Architecture Decision Records (ADR)</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <pre><code># ADR 0001: Usar WaveTerm como GUI Unificado
+
+**Estado**: Aceptado
+**Fecha**: 2026-05-10
+
+## Contexto
+Necesitamos GUI para ducer-cli sin construir una desde cero.
+
+## Decisión
+Integrar WaveTerm como shell gráfico sobre el CLI existente.
+
+## Consecuencias
+- Positivas: time-to-ship reducido, plugins existentes.
+- Negativas: dependencia externa, limitaciones de extensión.</code></pre>
+      <div class="callout">
+        <span class="callout-label">Ley del Contexto Preservado</span>
+        <p>Los ADRs nunca se eliminan ni sobreescriben. Se marcan como "Supersedido por ADR XXXX". La historia de decisiones es documentación primaria.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">3.4</span>
+      <span class="section-title">Docstrings y Comentarios en Código</span>
+      <span class="tag tag-law">LEY</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Ley de Preservación</span>
+        <p>Prohibido eliminar comentarios o docstrings existentes a menos que sean técnicamente incorrectos. La preservación del contexto es prioridad sobre la limpieza estética.</p>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-label">Comentar</div>
+          <div class="card-value">El POR QUÉ de una decisión no obvia · Workarounds con explicación · Comportamientos contra-intuitivos · TODOs con fecha y contexto</div>
+        </div>
+        <div class="card">
+          <div class="card-label">No comentar</div>
+          <div class="card-value">Lo que el código claramente dice · Nombres de variables obvias · Cada línea · El historial de cambios (para eso está git)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 04: AGENTES ══════ -->
+<div id="page-agentes" class="page">
+  <div class="page-title">04 · Protocolo de Agentes IA</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">4.1</span>
+      <span class="section-title">Filosofía de Integración</span>
+      <span class="tag tag-law">LEY</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Principio Fundacional</span>
+        <p>"Logic dictates. AI executes." El humano define la arquitectura, los contratos y las decisiones. El agente implementa dentro de esos límites. Nunca al revés.</p>
+      </div>
+      <p>El agente IA es un ejecutor de alta velocidad, no un arquitecto. Un agente sin SOP es ruido. Un agente con SOP es multiplicador de fuerza.</p>
+      <div class="callout callout-red">
+        <span class="callout-label">Anti-Patrón Crítico</span>
+        <p>Nunca dar a un agente acceso de escritura irrestricto a <code>main</code> sin pipeline de validación. Nunca usar un agente para tomar decisiones de arquitectura sin revisión humana.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">4.2</span>
+      <span class="section-title">Archivos de Configuración del Agente</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <pre><code>docs/
+├── AGENT.md       ← SOP del agente para este proyecto
+├── GEMINI.md      ← Reglas para Gemini CLI (si aplica)
+├── SOUL.md        ← Identidad y principios del agente
+├── IDENTITY.md    ← Rol específico en este contexto
+└── MEMORY.md      ← Contexto persistente entre sesiones</code></pre>
+      <h3>Estructura mínima de AGENT.md</h3>
+      <pre><code># Agent SOP: [Nombre del Proyecto]
+
+## Rol
+[Qué hace el agente. Una sola oración.]
+
+## Stack y Contexto
+[Runtime, versiones, directorios clave.]
+
+## Leyes de Operación
+1. Lee el archivo relevante antes de modificarlo.
+2. Compila ANTES de reportar éxito.
+3. Un cambio lógico por operación. Sin mega-parches.
+4. Preservar comentarios y docstrings existentes.
+5. Reportar bloqueantes. No inventar workarounds.
+6. Nunca git push --force a main.
+
+## Rutas Clave
+- Source: [path absoluto]
+- Config: [path absoluto]
+- Output: [path absoluto]
+
+## Criterio de Éxito
+[Cómo sabe el agente que una tarea terminó.]</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">4.3</span>
+      <span class="section-title">Leyes de Operación del Agente</span>
+      <span class="tag tag-law">LEY</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Ley</th><th>Descripción</th></tr></thead>
+          <tbody>
+            <tr><td>Contexto</td><td>Nunca modifiques dos componentes lógicamente distintos en el mismo paso.</td></tr>
+            <tr><td>Verificación</td><td>Todo cambio en <code>src/</code> es precedido por compilación exitosa.</td></tr>
+            <tr><td>Ruta</td><td>Verificar si la ruta es absoluta o relativa antes de escribir. Forward-slash por defecto.</td></tr>
+            <tr><td>Preservación</td><td>Prohibido eliminar comentarios o docstrings sin justificación técnica explícita.</td></tr>
+            <tr><td>Transparencia</td><td>Reportar bloqueantes. No inventar workarounds. No asumir éxito sin verificación.</td></tr>
+            <tr><td>Aislamiento</td><td>Antes de borrados masivos: generar lista y esperar validación humana.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">4.4</span>
+      <span class="section-title">Permisos Git del Agente</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="grid2">
+        <div class="card">
+          <div class="card-label" style="color:var(--green)">Permitido</div>
+          <div class="card-value">Commits atómicos con Conventional Commits · Crear ramas de feature · Rebase con instrucción humana explícita · Push a main con autorización</div>
+        </div>
+        <div class="card">
+          <div class="card-label" style="color:var(--red)">Prohibido</div>
+          <div class="card-value"><code>git push --force</code> a main · Merge a main sin revisión humana · Version bumps sin instrucción · Eliminar tags · Rebase en ramas compartidas</div>
+        </div>
+      </div>
+      <pre><code>git add &lt;archivo-especifico&gt;   # Nunca git add .
+git status                      # Verificar staging
+git commit -m "fix(parser): handle edge case"
+git log --oneline -1            # Confirmar resultado</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">4.5</span>
+      <span class="section-title">Prompts de Alta Fidelidad</span>
+      <span class="tag tag-ref">REF</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <p>La calidad del output del agente es directamente proporcional a la calidad del contexto provisto.</p>
+      <pre><code>Contexto:        [Proyecto / Stack / Versión]
+Archivo:         [ruta absoluta]
+Estado actual:   [descripción técnica del problema]
+Estado deseado:  [resultado esperado específico]
+Restricciones:   [qué NO tocar]
+Éxito cuando:    [criterio verificable]</code></pre>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 05: CC STANDARD ══════ -->
+<div id="page-cc" class="page">
+  <div class="page-title">05 · CC Standard: Conscious Code Manifesto</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.0</span>
+      <span class="section-title">Declaración de Principios</span>
+      <span class="tag tag-cc">CC</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Conscious Code Standard</span>
+        <p>El código consciente no es aquel que funciona. Es aquel que puede ser leído, auditado, mantenido y transferido sin pérdida de intención. La inteligencia humana define la intención. La herramienta ejecuta la forma.</p>
+      </div>
+      <p>Los ocho principios del CC Standard aplican a todo código producido bajo FMG, ya sea por humano o agente.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.1</span>
+      <span class="section-title">I — Soberanía Cognitiva</span>
+      <span class="tag tag-cc">CC</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Principio I</span>
+        <p>El desarrollador mantiene comprensión total de cada línea que firma. El código generado por IA que no se entiende no se commitea.</p>
+      </div>
+      <p>Usar IA para generar código que no entiendes es deuda cognitiva. Tarde o temprano la pagas con un bug que no puedes diagnosticar. El agente acelera la ejecución de decisiones humanas — no las reemplaza.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.2</span>
+      <span class="section-title">II — Los Fallos son Documentación Primaria</span>
+      <span class="tag tag-cc">CC</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Principio II</span>
+        <p>Los errores se documentan donde ocurren, con contexto suficiente para reproducirlos. Un bug sin post-mortem es una deuda que se paga dos veces.</p>
+      </div>
+      <pre><code># BUG: descripción de qué fallaba y cómo se manifestaba.
+# FIX: descripción de la corrección y por qué funciona.
+# LESSON: qué se aprendió / qué evitar en el futuro.</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.3</span>
+      <span class="section-title">III — Atomicidad de Responsabilidad</span>
+      <span class="tag tag-cc">CC</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Principio III</span>
+        <p>Cada función hace una cosa. Cada módulo tiene un dominio. Cada commit encapsula un cambio. La atomicidad no es un estilo — es la condición mínima de mantenibilidad.</p>
+      </div>
+      <p>La violación de atomicidad es el origen de la mayoría de los bugs de producción. Una función que hace dos cosas tiene dos razones para fallar.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.4</span>
+      <span class="section-title">IV — Trazabilidad Total</span>
+      <span class="tag tag-cc">CC</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Principio IV</span>
+        <p>Toda decisión técnica no trivial tiene un rastro: en el commit, en el ADR, o en un comentario inline. Si la decisión no está documentada, técnicamente no existió.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.5</span>
+      <span class="section-title">V — Contrato de Interfaces</span>
+      <span class="tag tag-cc">CC</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Principio V</span>
+        <p>Las interfaces públicas (APIs, CLIs, módulos exportados) son contratos. Un cambio breaking sin MAJOR bump es una mentira semántica.</p>
+      </div>
+      <p>SemVer no es burocracia. Es el mecanismo por el cual otros sistemas confían en el tuyo. Romperlo es romper esa confianza.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.6</span>
+      <span class="section-title">VI — Mínima Superficie de Riesgo</span>
+      <span class="tag tag-cc">CC</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Principio VI</span>
+        <p>El código más seguro es el que no existe. Cada dependencia es una superficie de ataque. Cada feature no esencial es deuda de mantenimiento. La simplicidad es una decisión técnica, no estética.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.7</span>
+      <span class="section-title">VII — Reproducibilidad Determinista</span>
+      <span class="tag tag-cc">CC</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Principio VII</span>
+        <p>El mismo input produce el mismo output en cualquier ambiente. El código que funciona "solo en mi máquina" no funciona. Las dependencias se pinean. Los builds son reproducibles.</p>
+      </div>
+      <p>Lock files (<code>Cargo.lock</code>, <code>poetry.lock</code>, <code>package-lock.json</code>) se commitean siempre en proyectos finales. Sin excepción.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">5.8</span>
+      <span class="section-title">VIII — Legibilidad como Feature</span>
+      <span class="tag tag-cc">CC</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="callout">
+        <span class="callout-label">Principio VIII</span>
+        <p>El código se escribe una vez y se lee cien veces. La legibilidad no es un lujo posterior — es parte del diseño inicial. El código inteligible sobrevive a su autor.</p>
+      </div>
+      <p>Nombres que revelan intención. Funciones que caben en una pantalla. Abstracciones que reducen carga cognitiva. Si necesitas un comentario para explicar <em>qué</em> hace el código (no por qué), el código falla en legibilidad.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 06: CHECKLISTS ══════ -->
+<div id="page-checklist" class="page">
+  <div class="page-title">06 · Checklists Operativos</div>
+
+  <div class="section open">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">6.1</span>
+      <span class="section-title">Creación de Nuevo Repositorio</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="checklist">
+        <li><div class="cb" onclick="check(this)"></div><span>README.md creado con estructura completa (tagline, install, uso)</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>CHANGELOG.md inicializado con entrada <code>[Unreleased]</code></span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>LICENSE declarado y archivo presente</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>.gitignore hardened para el stack del proyecto</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>VERSION inicializado en <code>0.1.0</code></span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Tag inicial <code>v0.1.0</code> creado y pusheado</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Descripción y Topics configurados en GitHub (mínimo 3)</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Branch <code>main</code> como default. Branch protection activa si es colaborativo.</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span><code>docs/wiki/index.md</code> creado si el proyecto requiere wiki extensa</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span><code>docs/AGENT.md</code> creado si el proyecto integra agentes IA</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">6.2</span>
+      <span class="section-title">Pre-Commit</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="checklist">
+        <li><div class="cb" onclick="check(this)"></div><span><code>git status</code> revisado — nada inesperado en staging</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>El cambio hace UNA sola cosa lógica</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>El código compila/ejecuta sin errores</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Mensaje de commit sigue Conventional Commits</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Subject ≤50 chars, imperativo, minúscula, sin punto final</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>No se eliminaron comentarios o docstrings sin razón técnica</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Todo código generado por IA fue leído y comprendido</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">6.3</span>
+      <span class="section-title">Pre-Push / Release</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="checklist">
+        <li><div class="cb" onclick="check(this)"></div><span><code>git log --oneline origin/main..HEAD</code> — commits atómicos y bien nombrados</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>No hay merge commits en el historial</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>VERSION actualizado al nuevo número</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>CHANGELOG.md actualizado con todos los cambios</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Versión en manifest del proyecto coincide con VERSION</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Tag <code>vX.Y.Z</code> creado con <code>git tag -a</code></span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Tests pasan (si aplica)</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span><code>git push origin main && git push origin vX.Y.Z</code> ejecutados</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Post-push: <code>git log --oneline origin/main..HEAD</code> está vacío</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">6.4</span>
+      <span class="section-title">Higiene de Ramas (Post-Sesión)</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="checklist">
+        <li><div class="cb" onclick="check(this)"></div><span>Todas las ramas mergeadas fueron eliminadas localmente</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Todas las ramas mergeadas fueron eliminadas en remoto</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span><code>git remote prune origin</code> ejecutado</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span><code>git branch -a</code> muestra solo ramas permanentes activas</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>.gitignore actualizado para cualquier nuevo artefacto detectado</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">6.5</span>
+      <span class="section-title">Validación de Sesión con Agente IA</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="checklist">
+        <li><div class="cb" onclick="check(this)"></div><span>El agente leyó AGENT.md / GEMINI.md antes de operar</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Cada operación fue en scope mínimo (un componente a la vez)</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>El agente verificó compilación antes de reportar éxito</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>No se ejecutó <code>git push --force</code> a main desde el agente</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>El humano revisó y aprobó cada decisión de arquitectura</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Todo código generado por agente fue leído y comprendido por el humano</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">6.6</span>
+      <span class="section-title">Validación de Documentación</span>
+      <span class="tag tag-sop">SOP</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="checklist">
+        <li><div class="cb" onclick="check(this)"></div><span>Todo H1 es único por archivo y ≤60 chars</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Todo H2 ≤40 chars</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>No hay alertas consecutivas en ninguna sección</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>No hay links absolutos <code>file:///</code> o sin extensión</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>Todos los diagramas Mermaid usan PascalCase en nodos</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>El tono no usa verbos de duda (podría, sería, intentaría)</span></li>
+        <li><div class="cb" onclick="check(this)"></div><span>La versión en CHANGELOG coincide con VERSION y el tag de Git</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>FMG Repository Development Bible · v1.0.0 · 2026-05-10 · Fearless Media Group · Logic dictates. AI executes.</p>
+</footer>
+
+<script>
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggle(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+function check(box) {
+  box.classList.toggle('done');
+  box.textContent = box.classList.contains('done') ? '✓' : '';
+}
+</script>
+</body>
+</html>

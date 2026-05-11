@@ -1,0 +1,37 @@
+# FMG Standard Gitignore - Hardened
+
+# Logs y temporales
+*.log
+*.tmp
+*.bak
+cargo_*.txt
+debug_*.txt
+
+# Entorno y Secretos
+.env
+.env.*
+*.local
+.manifests/
+
+# Build artifacts
+target/
+dist/
+build/
+bin/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+.next/
+.serverless/
+
+# IDE y Sistema
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,19 @@
+# Logs y temporales
+*.log
+*.tmp
+*.bak
+
+# Entorno
+.env
+.env.*
+*.local
+
+# IDE personal
+.vscode/
+.idea/
+*.suo
+.DS_Store
+Thumbs.db
+
+# Planos de Gemini CLI
+plans/
