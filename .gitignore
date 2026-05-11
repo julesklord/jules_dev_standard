@@ -1,19 +1,19 @@
-# Logs y temporales
+# Logs and temporals
 *.log
 *.tmp
 *.bak
 
-# Entorno
+# Environment
 .env
 .env.*
 *.local
 
-# IDE personal
+# Personal IDE
 .vscode/
 .idea/
 *.suo
 .DS_Store
 Thumbs.db
 
-# Planos de Gemini CLI
+# Gemini CLI plans
 plans/

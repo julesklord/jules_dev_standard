@@ -1,150 +1,150 @@
 # FMG Repository Development Bible
 
-> **Versión**: v1.0.0  
-> **Fecha**: 2026-05-10  
-> **Autor**: Jules Martins / Fearless Media Group  
-> **Aplica a**: Todos los repositorios FMG  
-> **Filosofía**: *Logic dictates. AI executes.*
+> **Version**: v1.0.0  
+> **Date**: 2026-05-10  
+> **Author**: Jules Martins / Fearless Media Group  
+> **Applies to**: Every single FMG repository  
+> **Philosophy**: *Logic dictates. AI executes.*
 
-Este documento es la autoridad técnica definitiva para la creación y mantenimiento de cualquier repositorio bajo el ecosistema FMG. No es una sugerencia. Es un conjunto de leyes técnicas. El humano define la arquitectura y las decisiones. El agente ejecuta dentro de esos límites.
+This document is the absolute technical authority for creating and maintaining any repository within the FMG ecosystem. It’s not a suggestion. It’s a set of technical laws. Humans define the architecture and make the hard calls. The agent executes within those boundaries. Don't let the machine wander off.
 
 ---
 
-## Tabla de Contenidos
+## Table of Contents
 
-1. [Estructura del Repositorio](#1-estructura-del-repositorio)
-2. [Git: Commits, Versiones e Higiene](#2-git-commits-versiones-e-higiene)
-3. [Documentación: Estándares y Formato](#3-documentación-estándares-y-formato)
-4. [Protocolo de Agentes IA](#4-protocolo-de-agentes-ia)
+1. [Repository Structure](#1-repository-structure)
+2. [Git: Commits, Versions, and Hygiene](#2-git-commits-versions-and-hygiene)
+3. [Documentation: Standards and Format](#3-documentation-standards-and-format)
+4. [AI Agent Protocol](#4-ai-agent-protocol)
 5. [CC Standard: Conscious Code Manifesto](#5-cc-standard-conscious-code-manifesto)
-6. [Checklists Operativos](#6-checklists-operativos)
+6. [Operational Checklists](#6-operational-checklists)
 
 ---
 
-## 1. Estructura del Repositorio
+## 1. Repository Structure
 
-### 1.1 Anatomía Mínima Obligatoria
+### 1.1 Mandatory Minimum Anatomy
 
-Todo repositorio FMG existe desde el día uno con esta estructura. No es opcional. Para facilitar esto, este repositorio estándar incluye un directorio `/template` que puede ser copiado directamente para iniciar un nuevo proyecto.
+Every FMG repository exists from day one with this structure. It’s not optional. To make your life easier (and keep you from messing up), this standard repo includes a `/template` directory that can be copied directly to start a new project.
 
 ```
 repo-root/
-├── README.md           ← Contrato público del proyecto
-├── CHANGELOG.md        ← Historial versionado de cambios
-├── LICENSE             ← Tipo de licencia declarado
-├── .gitignore          ← Hardened desde el día uno
-├── VERSION             ← Fuente única de verdad de la versión
+├── README.md           ← Project's public contract
+├── CHANGELOG.md        ← Versioned history of changes
+├── LICENSE             ← Declared license type
+├── .gitignore          ← Hardened from day one
+├── VERSION             ← Single source of truth for the version
 ├── docs/
 │   ├── wiki/
-│   │   ├── index.md    ← Home de la wiki
-│   │   └── *.md        ← Guías por dominio
-│   ├── AGENT.md        ← SOP para agentes IA (OBLIGATORIO)
-│   └── GEMINI.md       ← Reglas específicas para Gemini CLI
-└── src/                ← Código fuente (estructura según runtime)
+│   │   ├── index.md    ← Wiki home
+│   │   └── *.md        ← Domain-specific guides
+│   ├── AGENT.md        ← SOP for AI agents (MANDATORY)
+│   └── GEMINI.md       ← Specific rules for Gemini CLI
+└── src/                ← Source code (structure depends on runtime)
 ```
 
 > [!IMPORTANT]
-> Un repo sin README, CHANGELOG o .gitignore configurado no es un repo. Es un directorio con deuda.
+> A repo without a README, CHANGELOG, or .gitignore isn't a repo. It’s just a folder full of regret and technical debt.
 
 ---
 
-### 1.2 Estructura del README
+### 1.2 README Structure
 
-El README es la interfaz pública del proyecto. Define en 30 segundos qué es, qué hace y cómo se usa. Sigue esta estructura ordenada:
+The README is the project's public interface. It should define what it is, what it does, and how to use it in 30 seconds. Follow this ordered structure:
 
 ```markdown
-# Nombre del Proyecto
+# Project Name
 
-> Tagline de una línea. Qué hace. Para quién.
+> One-line tagline. What it does. Who it's for.
 
 ![version badge]  ![license badge]  ![status badge]
 
-## Qué es
-Descripción técnica concisa. Sin marketing.
+## What is it?
+Concise technical description. No marketing fluff.
 
-## Instalación
-Comandos exactos. Copy-paste funcional.
+## Installation
+Exact commands. Functional copy-paste.
 
-## Uso
-Ejemplo mínimo que funciona.
+## Usage
+A minimum working example.
 
-## Arquitectura (opcional)
-Diagrama o descripción de componentes clave.
+## Architecture (optional)
+Diagram or description of key components.
 
 ## Changelog
-Link a CHANGELOG.md
+Link to CHANGELOG.md
 
-## Licencia
-Tipo de licencia + link.
+## License
+License type + link.
 ```
 
-| Elemento | Regla | Límite |
+| Element | Rule | Limit |
 | :--- | :--- | :--- |
-| `# H1 Title` | Una sola instancia, igual al nombre del repo | 60 chars |
-| `## H2 Section` | Obligatorio post-H1. Sin numerar manualmente. | 40 chars |
-| `### H3` | Solo cuando H2 requiere subdivisión real | 40 chars |
-| Badges | Solo informativos: versión, licencia, estado. No decoration. | ≤5 |
-| Links | Relativos con extensión: `./docs/wiki/index.md` | — |
+| `# H1 Title` | One instance only, matching the repo name | 60 chars |
+| `## H2 Section` | Mandatory post-H1. No manual numbering. | 40 chars |
+| `### H3` | Only when H2 actually needs a sub-division | 40 chars |
+| Badges | Informational only: version, license, status. No decorations. | ≤5 |
+| Links | Relative with extensions: `./docs/wiki/index.md` | — |
 
-**Prohibido:** README con screenshots decorativos, GIFs animados de marketing, listas de features sin ejemplos de código, secciones vacías "coming soon".
+**Banned:** READMEs with decorative screenshots, animated marketing GIFs, feature lists without code examples, or "coming soon" sections. If it's not ready, don't list it.
 
 ---
 
-### 1.3 Estructura de la Wiki (`docs/wiki/`)
+### 1.3 Wiki Structure (`docs/wiki/`)
 
-La wiki documenta el *por qué* y el *cómo*. El README documenta el *qué*. No se mezclan.
+The wiki documents the *why* and the *how*. The README documents the *what*. Don't mix them up.
 
 ```
 docs/wiki/
-├── index.md            ← TOC + Overview de la wiki
-├── architecture.md     ← Decisiones de diseño, ADRs
-├── development.md      ← Setup local, flujo de contribución
-├── agent-sop.md        ← SOP para agentes IA (OBLIGATORIO si hay IA)
+├── index.md            ← TOC + Wiki overview
+├── architecture.md     ← Design decisions, ADRs
+├── development.md      ← Local setup, contribution flow
+├── agent-sop.md        ← SOP for AI agents (MANDATORY if AI is involved)
 ├── hygiene.md          ← Git hygiene, branching, releases
-└── [domain].md         ← Un archivo por dominio de conocimiento
+└── [domain].md         ← One file per knowledge domain
 ```
 
 > [!IMPORTANT]
-> Cada archivo wiki tiene un único dominio de responsabilidad. Si no puedes describir el archivo en 5 palabras, está haciendo demasiado.
+> Each wiki file has a single domain of responsibility. If you can't describe the file in 5 words, it's doing too much.
 
-**Tono de la Wiki — Autoridad Técnica Absoluta:**
+**Wiki Tone — Absolute Technical Authority (No "maybe" allowed):**
 
-| ✓ Correcto | ✗ Prohibido |
+| ✓ Correct | ✗ Banned |
 | :--- | :--- |
-| "El sistema exige `cargo check` antes de commit" | "Se recomienda ejecutar `cargo check`" |
-| "PoshBuddy garantiza compilación limpia" | "PoshBuddy intenta mantener compilación limpia" |
-| "El motor bloquea el pipeline si..." | "El motor es bloqueado cuando..." |
+| "The system requires `cargo check` before commit" | "It is recommended to run `cargo check`" |
+| "PoshBuddy guarantees clean compilation" | "PoshBuddy tries to maintain clean compilation" |
+| "The engine blocks the pipeline if..." | "The engine is blocked when..." |
 
-**Léxico prohibido en toda documentación FMG:**
+**Banned lexicon in all FMG documentation:**
 
-- *Creo que...*
-- *Podría... / Tal vez...*
-- *Basado en mi análisis...* (presenta el hecho directamente)
-- *Se recomienda...* (usar: "El sistema exige...")
-- *[Proyecto] intenta...* (usar: "[Proyecto] garantiza...")
+- *I think...*
+- *Could... / Maybe...*
+- *Based on my analysis...* (Just state the fact)
+- *It is recommended...* (Use: "The system requires...")
+- *[Project] tries to...* (Use: "[Project] guarantees...")
 
 ---
 
-### 1.4 Hardening del `.gitignore`
+### 1.4 Hardening the `.gitignore`
 
-El `.gitignore` se configura en el commit inicial y se mantiene activo. No es un documento que se edita "cuando hay problema".
+The `.gitignore` is configured in the initial commit and stays active. It’s not something you edit only "when there's a problem."
 
-**Siempre excluir:**
+**Always exclude:**
 
 ```gitignore
-# Logs y temporales
+# Logs and temp files
 *.log
 *.tmp
 *.bak
 cargo_*.txt
 debug_*.txt
 
-# Entorno
+# Environment
 .env
 .env.*
 *.local
 
-# Manifiestos locales
+# Local manifests
 .manifests/
 
 # Build artifacts
@@ -157,7 +157,7 @@ __pycache__/
 node_modules/
 .next/
 
-# IDE personal
+# Personal IDE stuff
 .vscode/settings.json
 .idea/
 *.suo
@@ -165,86 +165,86 @@ node_modules/
 Thumbs.db
 ```
 
-**Nunca trackear:** credenciales, API keys, archivos de sesión personal, output de builds locales, symlinks a rutas absolutas.
+**Never track:** credentials, API keys, personal session files, local build output, or symlinks to absolute paths.
 
 > [!IMPORTANT]
-> Antes de cada commit: `git status` completo. Si aparece algo inesperado, se agrega al `.gitignore` antes de continuar.
+> Before every commit: run a full `git status`. If something unexpected shows up, add it to `.gitignore` before you proceed.
 
 ---
 
-### 1.5 Licencias y Metadata del Repo
+### 1.5 Licenses and Repo Metadata
 
-| Caso de Uso | Licencia Recomendada |
+| Use Case | Recommended License |
 | :--- | :--- |
-| Herramientas de desarrollo FOSS | MIT o Apache 2.0 |
-| Librerías de uso libre con atribución | MIT |
-| Proyectos FMG internos | Propietaria / All Rights Reserved |
-| Plugins/extensiones de OSS existente | Misma licencia del proyecto padre |
-| Contenido educativo / docs | CC BY 4.0 |
+| FOSS development tools | MIT or Apache 2.0 |
+| Free libraries with attribution | MIT |
+| Internal FMG projects | Proprietary / All Rights Reserved |
+| Existing OSS plugins/extensions | Same license as the parent project |
+| Educational content / docs | CC BY 4.0 |
 
-GitHub Topics configurados desde el inicio. Mínimo 3 topics relevantes. La descripción del repo en GitHub replica exactamente el tagline del README.
+Configure GitHub Topics from the start. Minimum 3 relevant topics. The GitHub repo description must exactly match the README tagline.
 
 ---
 
-## 2. Git: Commits, Versiones e Higiene
+## 2. Git: Commits, Versions, and Hygiene
 
-### 2.1 Anatomía de un Commit Atómico
+### 2.1 Anatomy of an Atomic Commit
 
-Un commit atómico:
+An atomic commit:
 
-- Hace una **única** cosa lógica
-- Compila/ejecuta sin errores
-- Es entendible en aislamiento
-- Puede revertirse sin romper nada
+- Does **one single** logical thing
+- Compiles/runs without errors
+- Is understandable in isolation
+- Can be reverted without breaking the world
 
-**Regla de Oro:**
+**Golden Rule:**
 
 ```
-Una feature    = un commit
-Un bugfix      = un commit
-Un refactor    = un commit separado
-Cambios docs   = un commit separado
-Version bump   = un commit separado
-CHANGELOG      = un commit separado
+One feature    = one commit
+One bugfix      = one commit
+One refactor    = a separate commit
+Docs changes    = a separate commit
+Version bump    = a separate commit
+CHANGELOG       = a separate commit
 ```
 
-**Formato Conventional Commits:**
+**Conventional Commits Format:**
 
 ```
 <type>(<scope>): <subject>
 
-<body — QUÉ y POR QUÉ, no CÓMO. Ajustar a 72 chars/línea.>
+<body — WHAT and WHY, not HOW. Wrap at 72 chars/line.>
 
-<footer — Fixes #123 / BREAKING CHANGE: descripción>
+<footer — Fixes #123 / BREAKING CHANGE: description>
 ```
 
-**Reglas de formato del subject:**
+**Subject Formatting Rules:**
 
-- Modo imperativo: "add", "fix", "remove" — nunca "added", "fixing"
-- Minúscula
-- Sin punto al final
-- Máximo 50 caracteres
+- Imperative mode: "add", "fix", "remove" — never "added", "fixing"
+- Lowercase
+- No period at the end
+- Maximum 50 characters
 
 ---
 
-### 2.2 Tabla de Tipos de Commit
+### 2.2 Commit Types Table
 
-| Tipo | Dominio | SemVer Impact |
+| Type | Domain | SemVer Impact |
 | :--- | :--- | :--- |
-| `feat` | Nueva funcionalidad | MINOR |
-| `fix` | Corrección de bug | PATCH |
-| `perf` | Optimización de rendimiento | PATCH |
-| `refactor` | Reorganización sin cambio funcional | NONE |
-| `docs` | Documentación, wiki, README | NONE |
-| `style` | UI/visual sin cambio de lógica | NONE |
-| `test` | Tests nuevos o reparados | NONE |
+| `feat` | New functionality | MINOR |
+| `fix` | Bug correction | PATCH |
+| `perf` | Performance optimization | PATCH |
+| `refactor` | Reorganization without functional change | NONE |
+| `docs` | Documentation, wiki, README | NONE |
+| `style` | UI/visual without logic change | NONE |
+| `test` | New or repaired tests | NONE |
 | `chore` | Deps, config, release bumps | NONE |
 | `ci` | CI/CD pipeline changes | NONE |
-| `BREAKING CHANGE` | Cualquier tipo con API incompatible | MAJOR |
+| `BREAKING CHANGE` | Any type with incompatible API | MAJOR |
 
-**Ley de Mayor Impacto:** Si hay un `feat` y un `fix` en el mismo lote de cambios, el incremento es MINOR. La regla de mayor impacto prevalece siempre.
+**Law of Greatest Impact:** If there's a `feat` and a `fix` in the same batch, the bump is MINOR. The rule of greatest impact always prevails.
 
-**Ejemplos reales:**
+**Real Examples:**
 
 ```bash
 feat(cli): add UVR integration for stem separation
@@ -279,19 +279,19 @@ chore(release): bump version to 1.3.0
 
 ---
 
-### 2.3 Versionado Semántico (SemVer)
+### 2.3 Semantic Versioning (SemVer)
 
-Formato: `MAJOR.MINOR.PATCH` — Pre-release: `v1.0.0-beta.1`
+Format: `MAJOR.MINOR.PATCH` — Pre-release: `v1.0.0-beta.1`
 
-| Componente | Cuándo | Ejemplo |
+| Component | When | Example |
 | :--- | :--- | :--- |
-| MAJOR | Breaking changes. API incompatible. Parámetros cambian. | 1.2.3 → 2.0.0 |
-| MINOR | Nueva funcionalidad backward-compatible. | 1.2.3 → 1.3.0 |
+| MAJOR | Breaking changes. Incompatible API. Params change. | 1.2.3 → 2.0.0 |
+| MINOR | New backward-compatible functionality. | 1.2.3 → 1.3.0 |
 | PATCH | Bugfixes. Security patches. Performance. | 1.2.3 → 1.2.4 |
 
-**Ley de Unicidad de Fuente:** La versión en el archivo de manifest del proyecto (`Cargo.toml`, `pyproject.toml`, `package.json`, `VERSION`) DEBE coincidir exactamente con el último tag de Git y la entrada superior del `CHANGELOG.md`. Tres fuentes, un número.
+**Law of Single Source:** The version in the project manifest (`Cargo.toml`, `pyproject.toml`, `package.json`, `VERSION`) MUST match the last Git tag and the top entry in `CHANGELOG.md`. Three sources, one number.
 
-**Ubicaciones por runtime:**
+**Runtime locations:**
 
 ```toml
 # Rust — Cargo.toml
@@ -311,40 +311,40 @@ version = "1.3.0"
 ```
 
 ```
-# Genérico — VERSION file
+# Generic — VERSION file
 1.3.0
 ```
 
-**Flujo de Version Bump:**
+**Version Bump Flow:**
 
 ```bash
-# 1. Determinar bump leyendo commits desde último tag
+# 1. Determine bump by reading commits since last tag
 git log --oneline vX.Y.Z..HEAD
 
-# 2. Actualizar archivo de versión
+# 2. Update version file
 echo "1.3.0" > VERSION
 
-# 3. Commit de versión
+# 3. Version commit
 git add VERSION
 git commit -m "chore(release): bump version to 1.3.0"
 
-# 4. Actualizar CHANGELOG (ver sección 2.4)
+# 4. Update CHANGELOG (see section 2.4)
 git add CHANGELOG.md
 git commit -m "docs(changelog): update for v1.3.0"
 
-# 5. Tag anotado
+# 5. Annotated tag
 git tag -a v1.3.0 -m "Release v1.3.0"
 
-# 6. Push completo
+# 6. Full push
 git push origin main
 git push origin v1.3.0
 ```
 
 ---
 
-### 2.4 CHANGELOG: Estructura y Protocolo
+### 2.4 CHANGELOG: Structure and Protocol
 
-El CHANGELOG es la memoria pública del proyecto. Sigue [Keep a Changelog](https://keepachangelog.com) + SemVer.
+The CHANGELOG is the project's public memory. Follow [Keep a Changelog](https://keepachangelog.com) + SemVer.
 
 ```markdown
 # Changelog
@@ -371,68 +371,68 @@ Format: keepachangelog.com · Versioning: semver.org
 - Memory leak in session management
 ```
 
-| Sección | Uso |
+| Section | Usage |
 | :--- | :--- |
-| `Added` | Funcionalidad nueva |
-| `Changed` | Cambios en funcionalidad existente |
-| `Deprecated` | Features que serán eliminadas |
-| `Removed` | Features eliminadas |
+| `Added` | New functionality |
+| `Changed` | Changes in existing functionality |
+| `Deprecated` | Features that will be removed |
+| `Removed` | Removed features |
 | `Fixed` | Bug fixes |
-| `Security` | Patches de seguridad |
+| `Security` | Security patches |
 
-**Prohibido:** Entradas genéricas como "Various fixes" o "Code improvements". Cada entrada describe un cambio concreto y user-facing.
+**Banned:** Generic entries like "Various fixes" or "Code improvements." Every entry must describe a concrete, user-facing change.
 
 ---
 
-### 2.5 Higiene de Ramas
+### 2.5 Branch Hygiene
 
-| Tipo | Naming | Vida útil |
+| Type | Naming | Lifespan |
 | :--- | :--- | :--- |
-| Producción estable | `main` | Permanente |
-| Integración (si aplica) | `dev` | Permanente (proyectos colaborativos) |
-| Feature | `feat/nombre-corto` | Hasta merge → eliminar |
-| Bugfix | `fix/descripcion-bug` | Hasta merge → eliminar |
-| Refactor | `refactor/componente` | Hasta merge → eliminar |
+| Stable Production | `main` | Permanent |
+| Integration (if applicable) | `dev` | Permanent (collaborative projects) |
+| Feature | `feat/short-name` | Until merge → delete |
+| Bugfix | `fix/bug-description` | Until merge → delete |
+| Refactor | `refactor/component` | Until merge → delete |
 
-**Protocolo de limpieza post-merge:**
+**Post-merge Cleanup Protocol:**
 
 ```bash
-# Eliminar rama local
-git branch -d feat/mi-feature
+# Delete local branch
+git branch -d feat/my-feature
 
-# Eliminar rama remota
-git push origin --delete feat/mi-feature
+# Delete remote branch
+git push origin --delete feat/my-feature
 
-# Limpiar referencias fantasma
+# Clean ghost references
 git remote prune origin
 
-# Verificar
+# Verify
 git branch -a
 ```
 
 > [!IMPORTANT]
-> **Anti-Force:** Prohibido `git push --force` a `main`. Único caso permitido: rama de feature aislada, bajo justificación extrema documentada en el commit body.
+> **Anti-Force:** No `git push --force` to `main`. Ever. Only exception: isolated feature branch with extreme justification documented in the commit body.
 
 > [!IMPORTANT]
-> **Anti-Merge Commit:** Historial lineal obligatorio en `main`. Usar `git pull --rebase` siempre. En ramas compartidas, usar `git merge`. Nunca `git pull` sin `--rebase`.
+> **Anti-Merge Commit:** Linear history is mandatory on `main`. Always use `git pull --rebase`. In shared branches, use `git merge`. Never `git pull` without `--rebase`.
 
 ---
 
-### 2.6 Protocolo Pre-Push Completo
+### 2.6 Full Pre-Push Protocol
 
 ```bash
-# 1. Estado del working tree — debe estar limpio
+# 1. Working tree status — must be clean
 git status
 
-# 2. Revisar commits a subir
+# 2. Review commits to be pushed
 git log --oneline origin/main..HEAD
 
-# 3. ¿Son atómicos? ¿Mensajes correctos?
-# Si no → rebase interactivo
+# 3. Are they atomic? Correct messages?
+# If not → interactive rebase
 git rebase -i origin/main
-# Opciones: pick / reword / squash / fixup / drop
+# Options: pick / reword / squash / fixup / drop
 
-# 4. Build/compile exitoso (según runtime)
+# 4. Successful build/compile (depending on runtime)
 cargo check           # Rust
 python -m py_compile src/main.py  # Python
 npm run build         # Node
@@ -440,61 +440,61 @@ npm run build         # Node
 # 5. Tests
 cargo test / pytest / npm test
 
-# 6. Segunda revisión de status — nada filtrado
+# 6. Second status check — nothing leaked
 git status
 
 # 7. Push
 git push origin main
-git push origin vX.Y.Z   # Si hay release
+git push origin vX.Y.Z   # If there's a release
 ```
 
 ---
 
-### 2.7 Trampas Comunes y Recuperación
+### 2.7 Common Traps and Recovery
 
-| Trampa | Síntoma | Solución |
+| Trap | Symptom | Solution |
 | :--- | :--- | :--- |
-| Merge commit en main | `Merge branch 'X'` en log | `git rebase -i origin/main` → drop merge commit |
-| Tag olvidado | Release sin tag | `git tag -a vX.Y.Z -m "..." && git push origin vX.Y.Z` |
-| Versión inconsistente | VERSION ≠ tag ≠ CHANGELOG | Commit corrector con todos los archivos. Tag apunta al fix. |
-| Tag sin push | Tag local, no remoto | `git push origin --tags` |
-| Rebase en rama compartida | Historial divergente para otros | Nunca rebase en shared branches. Solo merge. |
-| Archivos no deseados en staging | `.env` aparece en `git status` | `git rm --cached .env` → agregar a `.gitignore` |
+| Merge commit on main | `Merge branch 'X'` in log | `git rebase -i origin/main` → drop merge commit |
+| Forgotten tag | Release without tag | `git tag -a vX.Y.Z -m "..." && git push origin vX.Y.Z` |
+| Inconsistent version | VERSION ≠ tag ≠ CHANGELOG | Fix-it commit with all files. Tag points to the fix. |
+| Tag without push | Tag is local, not remote | `git push origin --tags` |
+| Rebase on shared branch | Divergent history for others | Never rebase shared branches. Only merge. |
+| Junk files in staging | `.env` shows up in `git status` | `git rm --cached .env` → add to `.gitignore` |
 
 ---
 
-## 3. Documentación: Estándares y Formato
+## 3. Documentation: Standards and Format
 
-### 3.1 Estándares de Markdown
+### 3.1 Markdown Standards
 
-| Elemento | Regla | Límite |
+| Element | Rule | Limit |
 | :--- | :--- | :--- |
-| `# H1` | Una instancia por archivo, igual al título del doc | 60 chars |
-| `## H2` | Secciones principales. Sin numerar manualmente. | 40 chars |
-| `### H3` | Solo cuando H2 requiere subdivisión real | 40 chars |
-| Alertas | Max 2 por sección. Nunca consecutivas. | — |
-| Links | Relativos con extensión: `./file.md`. Nunca `file:///` | — |
-| Tablas | Solo datos estructurados. No decorativas. | — |
-| Code blocks | Language tag siempre: ` ```bash `, ` ```python `, ` ```rust ` | — |
+| `# H1` | One instance per file, matching the doc title | 60 chars |
+| `## H2` | Main sections. No manual numbering. | 40 chars |
+| `### H3` | Only when H2 actually needs sub-division | 40 chars |
+| Alerts | Max 2 per section. Never consecutive. | — |
+| Links | Relative with extensions: `./file.md`. Never `file:///` | — |
+| Tables | Structured data only. Not for decoration. | — |
+| Code blocks | Always include language tag: ` ```bash `, ` ```python `, ` ```rust ` | — |
 
 ---
 
-### 3.2 Diagramas con Mermaid
+### 3.2 Mermaid Diagrams
 
-| Tipo de Diagrama | Formato Mermaid |
+| Diagram Type | Mermaid Format |
 | :--- | :--- |
-| Flujos de estado | `stateDiagram-v2` |
-| Dependencias / arquitectura | `graph TD` o `graph LR` |
-| Secuencias | `sequenceDiagram` |
+| State flows | `stateDiagram-v2` |
+| Dependencies / architecture | `graph TD` or `graph LR` |
+| Sequences | `sequenceDiagram` |
 | Timelines / releases | `timeline` |
 
-**Reglas:**
+**Rules:**
 
-- Nodos en `PascalCase`: `ConnectivityCheck`, `FetchData`, `ParseResult`
-- Descripciones de flechas: verbos en infinitivo: `--> |Download|`, `--> |Validate|`
-- Diagramas son máquinas de estado puras, no arte. Sin nodos redundantes ni flechas decorativas.
+- Nodes in `PascalCase`: `ConnectivityCheck`, `FetchData`, `ParseResult`
+- Arrow descriptions: infinitive verbs: `--> |Download|`, `--> |Validate|`
+- Diagrams are pure state machines, not art. No redundant nodes or decorative arrows.
 
-**Ejemplo:**
+**Example:**
 
 ```mermaid
 stateDiagram-v2
@@ -511,39 +511,39 @@ stateDiagram-v2
 
 ### 3.3 Architecture Decision Records (ADR)
 
-Cada decisión técnica no trivial se documenta. Ubicación: `docs/wiki/architecture.md` o archivos individuales `docs/adr/NNNN-titulo.md`.
+Document every non-trivial technical decision. Location: `docs/wiki/architecture.md` or individual files in `docs/adr/NNNN-title.md`.
 
 ```markdown
-# ADR 0001: Usar WaveTerm como GUI Unificado
+# ADR 0001: Use WaveTerm as Unified GUI
 
-**Estado**: Aceptado  
-**Fecha**: 2026-05-10  
+**Status**: Accepted  
+**Date**: 2026-05-10  
 
-## Contexto
-Necesitamos una interfaz gráfica para ducer-cli sin construir una desde cero.
+## Context
+We need a graphical interface for ducer-cli without building one from scratch.
 
-## Decisión
-Integrar WaveTerm como shell gráfico sobre el CLI existente.
+## Decision
+Integrate WaveTerm as a graphical shell over the existing CLI.
 
-## Consecuencias
-- Positivas: time-to-ship reducido, ecosistema de plugins existente.
-- Negativas: dependencia externa, limitaciones del modelo de extensión.
+## Consequences
+- Positive: reduced time-to-ship, existing plugin ecosystem.
+- Negative: external dependency, extension model limitations.
 ```
 
-**Ley del Contexto Preservado:** Los ADRs nunca se eliminan ni se sobreescriben. Se marcan como `Supersedido por ADR XXXX`. La historia de decisiones es documentación primaria.
+**Law of Preserved Context:** ADRs are never deleted or overwritten. They are marked as `Superseded by ADR XXXX`. The history of decisions is primary documentation.
 
 ---
 
-### 3.4 Docstrings y Comentarios en Código
+### 3.4 Docstrings and Code Comments
 
-**Ley de Preservación:** Prohibido eliminar comentarios o docstrings existentes a menos que sean técnicamente incorrectos. La preservación del contexto es prioridad sobre la limpieza estética.
+**Law of Preservation:** Banned: deleting existing comments or docstrings unless they are technically wrong. Preserving context is a higher priority than aesthetic cleanup.
 
-| Comentar | No comentar |
+| Comment This | Don't Comment This |
 | :--- | :--- |
-| El POR QUÉ de una decisión no obvia | Lo que el código claramente dice |
-| Workarounds con su explicación | Nombres de variables obvias |
-| Comportamientos contra-intuitivos | Cada línea de código |
-| TODOs con fecha y contexto | El historial de cambios (para eso está git) |
+| The WHY of a non-obvious decision | What the code clearly says |
+| Workarounds with explanation | Obvious variable names |
+| Counter-intuitive behaviors | Every single line of code |
+| TODOs with date and context | Change history (that's what Git is for) |
 
 ```rust
 // WORKAROUND: UMC404HD drops first 512 bytes on cold start.
@@ -554,295 +554,247 @@ let _ = reader.read(&mut warmup_buf);
 
 ---
 
-## 4. Protocolo de Agentes IA
+## 4. AI Agent Protocol
 
-### 4.1 Filosofía de Integración
+### 4.1 Integration Philosophy
 
 > **"Logic dictates. AI executes."**
 
-El humano define la arquitectura, los contratos y las decisiones. El agente implementa dentro de esos límites. El agente IA es un ejecutor de alta velocidad, no un arquitecto. Su valor está en la velocidad de ejecución dentro de un contexto bien definido.
+Humans define the architecture, contracts, and decisions. The agent implements within those limits. The AI agent is a high-speed executor, not an architect. Its value lies in execution speed within a well-defined context.
 
-**Un agente sin SOP es ruido. Un agente con SOP es multiplicador de fuerza.**
+**An agent without an SOP is just noise. An agent with an SOP is a force multiplier.**
 
 > [!IMPORTANT]
-> Nunca dar a un agente acceso de escritura irrestricto a `main` sin pipeline de validación. Nunca usar un agente para tomar decisiones de arquitectura sin revisión humana. Un agente que toma decisiones sin el humano es un liability, no un asset.
+> Never give an agent unrestricted write access to `main` without a validation pipeline. Never use an agent to make architectural decisions without human review. An agent taking decisions without a human is a liability, not an asset.
 
 ---
 
-### 4.2 Archivos de Configuración del Agente
+### 4.2 Agent Config Files
 
-Todo proyecto que integre agentes IA mantiene los siguientes archivos:
+Every project integrating AI agents must maintain these files:
 
 ```
 docs/
-├── AGENT.md       ← SOP del agente para este proyecto específico
-├── GEMINI.md      ← Reglas para Gemini CLI (si aplica)
-├── SOUL.md        ← Identidad y principios del agente
-├── IDENTITY.md    ← Rol específico del agente en este contexto
-└── MEMORY.md      ← Estado de contexto persistente entre sesiones
+├── AGENT.md       ← Agent SOP for this specific project
+├── GEMINI.md      ← Rules for Gemini CLI (if applicable)
+├── SOUL.md        ← Agent identity and principles
+├── IDENTITY.md    ← Specific agent role in this context
+└── MEMORY.md      ← Persistent context state between sessions
 ```
 
-**Estructura mínima de `AGENT.md`:**
+**Minimum `AGENT.md` Structure:**
 
 ```markdown
-# Agent SOP: [Nombre del Proyecto]
+# Agent SOP: [Project Name]
 
-## Rol
-[Qué hace el agente en este proyecto. Una sola oración.]
+## Role
+[What the agent does in this project. One sentence.]
 
-## Stack y Contexto
-[Runtime, versiones, directorios clave, convenciones activas.]
+## Stack and Context
+[Runtime, versions, key directories, active conventions.]
 
-## Leyes de Operación
-1. Lee el archivo relevante antes de modificarlo.
-2. Ejecuta compilación/check ANTES de reportar éxito.
-3. Un cambio lógico por operación. Sin mega-parches.
-4. Preservar comentarios y docstrings existentes.
-5. Reportar bloqueantes. No inventar soluciones no especificadas.
-6. Nunca `git push --force` a main.
+## Laws of Operation
+1. Read the relevant file before modifying it.
+2. Run build/check BEFORE reporting success.
+3. One logical change per operation. No mega-patches.
+4. Preserve existing comments and docstrings.
+5. Report blockers. Don't invent unspecified solutions.
+6. Never `git push --force` to main.
 
-## Rutas Clave
-- Source: [path absoluto]
-- Config: [path absoluto]
-- Output: [path absoluto]
+## Key Paths
+- Source: [absolute path]
+- Config: [absolute path]
+- Output: [absolute path]
 
-## Comandos Frecuentes
-[Los comandos que el agente ejecutará regularmente.]
+## Frequent Commands
+[Commands the agent will run regularly.]
 
-## Criterio de Éxito
-[Cómo sabe el agente que una tarea está terminada.]
+## Success Criteria
+[How the agent knows a task is done.]
 ```
 
 ---
 
-### 4.3 Leyes de Operación del Agente
+### 4.3 Agent Laws of Operation
 
-| Ley | Descripción |
+| Law | Description |
 | :--- | :--- |
-| **Ley de Contexto** | Nunca modifiques dos componentes lógicamente distintos en el mismo paso. Un dominio por operación. |
-| **Ley de Verificación** | Todo cambio en `src/` es precedido por compilación exitosa. No se asume que funciona. |
-| **Ley de Ruta** | Antes de escribir un archivo, verificar si la ruta es absoluta o relativa. Paths forward-slash por defecto en entornos mixtos. |
-| **Ley de Preservación** | Prohibido eliminar comentarios o docstrings sin justificación técnica explícita. |
-| **Ley de Transparencia** | El agente reporta bloqueantes. No inventa workarounds no especificados. No asume éxito sin verificación. |
-| **Ley de Aislamiento** | Antes de borrados masivos: generar lista de objetivos y esperar validación humana. |
+| **Law of Context** | Never modify two logically distinct components in the same step. One domain per operation. |
+| **Law of Verification** | Every change in `src/` is preceded by a successful build. Never assume it works. |
+| **Law of Route** | Before writing a file, check if the path is absolute or relative. Forward-slash paths by default in mixed environments. |
+| **Law of Preservation** | Banned: deleting comments or docstrings without explicit technical justification. |
+| **Law of Transparency** | The agent reports blockers. It doesn't invent unspecified workarounds. No assuming success without verification. |
+| **Law of Isolation** | Before massive deletions: generate a target list and wait for human validation. |
 
-**Flujo de operación estándar:**
+**Standard Operational Flow:**
 
 ```
-1. Leer los archivos relevantes antes de modificar.
-2. Ejecutar la operación en el scope mínimo necesario.
-3. Verificar resultado (compile / test / git status).
-4. Reportar resultado con evidencia, no con suposición.
-5. Esperar instrucción antes del siguiente paso en pipelines críticos.
+1. Read relevant files before modifying.
+2. Execute the operation in the minimum necessary scope.
+3. Verify the result (compile / test / git status).
+4. Report the result with evidence, not assumptions.
+5. Wait for instructions before the next step in critical pipelines.
 ```
 
 ---
 
-### 4.4 Permisos Git del Agente
+### 4.4 Agent Git Permissions
 
-| Acción | Permitido |
+| Action | Allowed |
 | :--- | :--- |
-| Commits atómicos con Conventional Commits | ✓ Sí |
-| Crear ramas de feature | ✓ Sí |
-| `git rebase` con instrucciones explícitas del humano | ✓ Sí |
-| `git push origin main` (cambios revisados) | ✓ Sí, con autorización |
-| `git push --force` a `main` | ✗ Nunca |
-| Merge a `main` sin revisión humana | ✗ Nunca |
-| Version bumps sin instrucción explícita | ✗ Nunca |
-| Eliminación de tags existentes | ✗ Nunca |
-| Rebase en ramas compartidas | ✗ Nunca |
+| Atomic commits with Conventional Commits | ✓ Yes |
+| Create feature branches | ✓ Yes |
+| `git rebase` with explicit human instructions | ✓ Yes |
+| `git push origin main` (reviewed changes) | ✓ Yes, with authorization |
+| `git push --force` to `main` | ✗ Never |
+| Merge to `main` without human review | ✗ Never |
+| Version bumps without explicit instruction | ✗ Never |
+| Deleting existing tags | ✗ Never |
+| Rebase on shared branches | ✗ Never |
 
-**Patrón de commit desde agente:**
+**Agent Commit Pattern:**
 
 ```bash
-git add <archivo-especifico>     # Nunca git add .
-git status                       # Verificar staging
+git add <specific-file>     # Never git add .
+git status                   # Verify staging
 git commit -m "fix(parser): handle edge case in path resolution"
-git log --oneline -1             # Confirmar resultado
+git log --oneline -1         # Confirm result
 ```
 
 ---
 
-### 4.5 Prompts de Alta Fidelidad
+### 4.5 High-Fidelity Prompts
 
-La calidad del output del agente es directamente proporcional a la calidad del contexto provisto.
+The quality of the agent's output is directly proportional to the quality of the context provided.
 
-| Elemento | Por qué importa |
+| Element | Why it matters |
 | :--- | :--- |
-| Stack explícito | Runtime + versiones. El agente no adivina. |
-| Ruta absoluta de archivos clave | Elimina ambigüedad de paths. |
-| Estado actual + estado deseado | "Actualmente X, necesito Y" supera "arregla esto". |
-| Restricciones explícitas | "Sin tocar `auth.rs`", "solo el loop principal". |
-| Criterio de éxito | "Listo cuando `cargo test` pasa sin warnings". |
+| Explicit Stack | Runtime + versions. The agent doesn't guess. |
+| Absolute Paths | Eliminates path ambiguity. |
+| Current State + Desired State | "Currently X, I need Y" beats "fix this." |
+| Explicit Restrictions | "Don't touch `auth.rs`", "only the main loop." |
+| Success Criteria | "Done when `cargo test` passes without warnings." |
 
-**Plantilla de prompt de alta fidelidad:**
+**High-Fidelity Prompt Template:**
 
 ```
-Contexto: [Proyecto / Stack / Versión]
-Archivo objetivo: [ruta absoluta]
-Estado actual: [descripción técnica del problema]
-Estado deseado: [resultado esperado específico]
-Restricciones: [qué NO tocar]
-Criterio de éxito: [cómo verificar que está correcto]
+Context: [Project / Stack / Version]
+Target File: [absolute path]
+Current State: [technical description of the problem]
+Desired State: [specific expected result]
+Restrictions: [what NOT to touch]
+Success Criteria: [how to verify it's correct]
 ```
 
 ---
 
 ## 5. CC Standard: Conscious Code Manifesto
 
-El Conscious Code Standard aplica a todo código producido bajo FMG, ya sea por humano o agente. El código consciente no es aquel que funciona. Es aquel que puede ser leído, auditado, mantenido y transferido sin pérdida de intención.
+The Conscious Code Standard applies to all code produced under FMG, whether by human or agent. Conscious code isn't just code that works. It's code that can be read, audited, maintained, and transferred without losing its intent.
 
 ---
 
-### Principio I — Soberanía Cognitiva
+### Principle I — Cognitive Sovereignty
 
-El desarrollador mantiene comprensión total de cada línea que firma. El código generado por IA que no se entiende no se commitea.
+The developer maintains total understanding of every line they sign. AI-generated code that isn't understood is never committed.
 
-Usar IA para generar código que no entiendes es deuda cognitiva. Tarde o temprano la pagas con un bug que no puedes diagnosticar. El agente acelera la ejecución de decisiones humanas — no las reemplaza.
+Using AI to generate code you don't understand is cognitive debt. Sooner or later, you'll pay for it with a bug you can't diagnose. The agent accelerates human decision-making — it doesn't replace it.
 
 ---
 
-### Principio II — Los Fallos son Documentación Primaria
+### Principle II — Failures are Primary Documentation
 
-Los errores se documentan donde ocurren, con contexto suficiente para reproducirlos. Un bug sin post-mortem es una deuda que se paga dos veces.
+Errors are documented where they occur, with enough context to reproduce them. A bug without a post-mortem is a debt you pay twice.
 
 ```
-# Formato de documentación de fallo:
-# BUG: descripción de qué fallaba y cómo se manifestaba.
-# FIX: descripción de la corrección y por qué funciona.
-# LESSON: qué se aprendió / qué evitar en el futuro.
+# Failure Documentation Format:
+# BUG: Description of what was failing and how it manifested.
+# FIX: Description of the fix and why it works.
+# LESSON: What was learned / what to avoid in the future.
 ```
 
 ---
 
-### Principio III — Atomicidad de Responsabilidad
+### Principle III — Atomicity of Responsibility
 
-Cada función hace una cosa. Cada módulo tiene un dominio. Cada commit encapsula un cambio. La atomicidad no es un estilo — es la condición mínima de mantenibilidad.
+Each function does one thing. Each module has one domain. Each commit encapsulates one change. Atomicity isn't a style — it's the minimum condition for maintainability.
 
-La violación de atomicidad es el origen de la mayoría de los bugs de producción. Una función que hace dos cosas tiene dos razones para fallar.
-
----
-
-### Principio IV — Trazabilidad Total
-
-Toda decisión técnica no trivial tiene un rastro: en el commit, en el ADR, o en un comentario inline. Si la decisión no está documentada, técnicamente no existió.
+Violation of atomicity is the source of most production bugs. A function that does two things has two reasons to fail.
 
 ---
 
-### Principio V — Contrato de Interfaces
+### Principle IV — Total Traceability
 
-Las interfaces públicas (APIs, CLIs, módulos exportados) son contratos. Un cambio breaking sin MAJOR bump es una mentira semántica.
-
-SemVer no es burocracia. Es el mecanismo por el cual otros sistemas confían en el tuyo. Romperlo es romper esa confianza.
+Every non-trivial technical decision leaves a trail: in the commit, in the ADR, or in an inline comment. If a decision isn't documented, technically it never happened.
 
 ---
 
-### Principio VI — Mínima Superficie de Riesgo
+### Principle V — Interface Contract
 
-El código más seguro es el que no existe. Cada dependencia es una superficie de ataque. Cada feature no esencial es deuda de mantenimiento. La simplicidad es una decisión técnica, no estética.
+Public interfaces (APIs, CLIs, exported modules) are contracts. A breaking change without a MAJOR bump is a semantic lie.
 
----
-
-### Principio VII — Reproducibilidad Determinista
-
-El mismo input produce el mismo output en cualquier ambiente. El código que funciona "solo en mi máquina" no funciona. Las dependencias se pinean. Los builds son reproducibles.
-
-Lock files (`Cargo.lock`, `poetry.lock`, `package-lock.json`) se commitean siempre en proyectos finales. Sin excepción.
+SemVer isn't bureaucracy. It's the mechanism by which other systems trust yours. Breaking it breaks that trust.
 
 ---
 
-### Principio VIII — Legibilidad como Feature
+### Principle VI — Minimum Risk Surface
 
-El código se escribe una vez y se lee cien veces. La legibilidad no es un lujo posterior — es parte del diseño inicial. El código inteligible sobrevive a su autor.
-
-Nombres que revelan intención. Funciones que caben en una pantalla. Abstracciones que reducen carga cognitiva. Si necesitas un comentario para explicar *qué* hace el código (no por qué), el código falla en legibilidad.
+The safest code is the code that doesn't exist. Every dependency is an attack surface. Every non-essential feature is maintenance debt. Simplicity is a technical decision, not an aesthetic one.
 
 ---
 
-## 6. Checklists Operativos
+### Principle VII — Deterministic Reproducibility
 
-### 6.1 Creación de Nuevo Repositorio
+The same input produces the same output in any environment. Code that works "only on my machine" doesn't work. Dependencies are pinned. Builds are reproducible.
 
-- [ ] `README.md` creado con estructura completa (tagline, install, uso)
-- [ ] `CHANGELOG.md` inicializado con entrada `[Unreleased]`
-- [ ] `LICENSE` declarado y archivo presente
-- [ ] `.gitignore` hardened para el stack del proyecto
-- [ ] `VERSION` inicializado en `0.1.0`
-- [ ] Tag inicial `v0.1.0` creado y pusheado
-- [ ] Descripción y Topics configurados en GitHub
-- [ ] Branch `main` como default. Branch protection activa si es colaborativo.
-- [ ] `docs/wiki/index.md` creado si el proyecto requiere documentación extensa
-- [ ] `docs/AGENT.md` creado si el proyecto integra agentes IA
+Lock files (`Cargo.lock`, `poetry.lock`, `package-lock.json`) are always committed in final projects. No exceptions.
+
+---
+
+### Principle VIII — Readability as a Feature
+
+Code is written once and read a hundred times. Readability isn't a later luxury — it's part of the initial design. Intelligible code outlives its author.
+
+Names that reveal intent. Functions that fit on one screen. Abstractions that reduce cognitive load. If you need a comment to explain *what* the code does (instead of why), the code fails at readability.
+
+---
+
+## 6. Operational Checklists
+
+### 6.1 New Repository Creation
+
+- [ ] `README.md` created with full structure (tagline, install, usage)
+- [ ] `CHANGELOG.md` initialized with `[Unreleased]` entry
+- [ ] `LICENSE` declared and file present
+- [ ] `.gitignore` hardened for the project stack
+- [ ] `VERSION` initialized at `0.1.0`
+- [ ] Initial tag `v0.1.0` created and pushed
+- [ ] Description and Topics configured on GitHub
+- [ ] `main` branch set as default. Branch protection active if collaborative.
+- [ ] `docs/wiki/index.md` created if the project needs extensive docs
+- [ ] `docs/AGENT.md` created if the project integrates AI agents
 
 ---
 
 ### 6.2 Pre-Commit
 
-- [ ] `git status` revisado — nada inesperado en staging
-- [ ] El cambio hace UNA sola cosa lógica
-- [ ] El código compila/ejecuta sin errores
-- [ ] Mensaje de commit sigue Conventional Commits
-- [ ] Subject ≤50 chars, imperativo, minúscula, sin punto final
-- [ ] No se eliminaron comentarios o docstrings sin razón técnica
-- [ ] Todo código generado por IA fue leído y comprendido
+- [ ] `git status` reviewed — nothing unexpected in staging
+- [ ] The change does ONE single logical thing
+- [ ] Code compiles/runs without errors
+- [ ] Commit message follows Conventional Commits
+- [ ] Subject ≤50 chars, imperative, lowercase, no trailing period
+- [ ] No comments or docstrings deleted without technical reason
+- [ ] All AI-generated code was read and understood
 
 ---
 
 ### 6.3 Pre-Push / Release
 
-- [ ] `git log --oneline origin/main..HEAD` revisado — commits atómicos y bien nombrados
-- [ ] No hay merge commits en el historial
-- [ ] `VERSION` actualizado al nuevo número
-- [ ] `CHANGELOG.md` actualizado con todos los cambios
-- [ ] Versión en manifest del proyecto coincide con `VERSION`
-- [ ] Tag `vX.Y.Z` creado con `git tag -a`
-- [ ] Tests pasan (si aplica)
-- [ ] `git push origin main && git push origin vX.Y.Z` ejecutados
-- [ ] Post-push: `git log --oneline origin/main..HEAD` está vacío
-
----
-
-### 6.4 Higiene de Ramas (Post-Sesión)
-
-- [ ] Todas las ramas de feature/fix mergeadas fueron eliminadas localmente
-- [ ] Todas las ramas de feature/fix mergeadas fueron eliminadas en remoto
-- [ ] `git remote prune origin` ejecutado
-- [ ] `git branch -a` muestra solo ramas permanentes activas
-- [ ] `.gitignore` actualizado para cualquier nuevo artefacto detectado
-
----
-
-### 6.5 Validación de Sesión con Agente IA
-
-- [ ] El agente leyó `AGENT.md` / `GEMINI.md` antes de operar
-- [ ] Cada operación del agente fue en scope mínimo (un componente a la vez)
-- [ ] El agente verificó compilación antes de reportar éxito
-- [ ] No se ejecutó `git push --force` a `main` desde el agente
-- [ ] El humano revisó y aprobó cada decisión de arquitectura
-- [ ] Todo código generado por agente fue leído y comprendido por el humano
-
----
-
-### 6.6 Validación de Documentación
-
-- [ ] Todo H1 es único por archivo y ≤60 chars
-- [ ] Todo H2 ≤40 chars
-- [ ] No hay alertas consecutivas en ninguna sección
-- [ ] No hay links absolutos `file:///` o sin extensión
-- [ ] Todos los diagramas Mermaid usan `PascalCase` en nodos
-- [ ] El tono no usa verbos de duda (podría, sería, intentaría)
-- [ ] La versión en `CHANGELOG.md` coincide con `VERSION` y el tag de Git
-
----
-
-## Referencias
-
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [Keep a Changelog](https://keepachangelog.com/)
-- [Semantic Versioning](https://semver.org/)
-- [Git Documentation](https://git-scm.com/doc)
-
----
-
-*FMG Repository Development Bible · v1.0.0 · 2026-05-10*  
-*Fearless Media Group · Logic dictates. AI executes.*
+- [ ] `git log --oneline origin/main..HEAD` reviewed — atomic, well-named commits
+- [ ] No merge commits in history
+- [ ] `VERSION` updated to the new number
+- [ ] `CHANGELOG.md` updated with all changes
+- [ ] Project manifest version matches `VERSION`
+- [ ] Tag `vX.Y.Z` created with `git tag -a`
+- [ ] Tests pass (if applicable)
+- [ ] `git push origin main && git push origin vX.Y.Z` executed

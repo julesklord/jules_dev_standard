@@ -1,27 +1,33 @@
-# [Nombre del Proyecto]
+# [Project Name]
 
-> Tagline de una línea. Qué hace. Para quién.
+> One-line tagline. What it does. Who it's for.
 
 ![version badge]  ![license badge]  ![status badge]
 
-## Qué es
-Descripción técnica concisa del proyecto.
+## What is it?
 
-## Instalación
+Concise technical description of the project. No fluff allowed.
+
+## Installation
+
 ```bash
-# Comandos de instalación aquí
+# Installation commands here
 ```
 
-## Uso
+## Usage
+
 ```python
-# Ejemplo mínimo de uso
+# Minimum working example
 ```
 
-## Arquitectura
-Breve descripción de los componentes clave.
+## Architecture
+
+Brief description of the key components. Keep it technical.
 
 ## Changelog
-Consulta el historial de cambios en [CHANGELOG.md](./CHANGELOG.md).
 
-## Licencia
-Este proyecto está bajo la licencia [TIPO] - ver el archivo [LICENSE](./LICENSE) para más detalles.
+See the history of changes in [CHANGELOG.md](./CHANGELOG.md).
+
+## License
+
+This project is licensed under [TYPE] - see the [LICENSE](./LICENSE) file for details.

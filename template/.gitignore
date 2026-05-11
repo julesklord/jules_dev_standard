@@ -1,13 +1,13 @@
-# FMG Standard Gitignore - Hardened
+# [Your Organization] Standard Gitignore - Hardened
 
-# Logs y temporales
+# Logs and temporals
 *.log
 *.tmp
 *.bak
 cargo_*.txt
 debug_*.txt
 
-# Entorno y Secretos
+# Environment and Secrets
 .env
 .env.*
 *.local
@@ -25,7 +25,7 @@ node_modules/
 .next/
 .serverless/
 
-# IDE y Sistema
+# IDE and System
 .vscode/
 .idea/
 *.suo

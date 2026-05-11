@@ -1,18 +1,19 @@
-# Guía de Desarrollo
+# Development Guide
 
-## Requisitos Previos
+## Prerequisites
 
-- [Herramienta 1] (vX.Y.Z)
-- [Herramienta 2]
+- [Tool 1] (vX.Y.Z)
+- [Tool 2]
+- A functioning brain (v1.0.0 or higher)
 
-## Configuración Local
+## Local Setup
 
-1. Clonar el repositorio.
-2. [Paso de instalación]
-3. [Paso de configuración de entorno]
+1. Clone the repository.
+2. [Installation step]
+3. [Environment configuration step]
 
-## Comandos Útiles
+## Useful Commands
 
-- `npm start` / `cargo run`: Iniciar en desarrollo.
-- `npm test` / `cargo test`: Ejecutar suite de pruebas.
-- `npm run build` / `cargo build`: Compilar para producción.
+- `npm start` / `cargo run`: Start in development.
+- `npm test` / `cargo test`: Run the test suite. (Do it.)
+- `npm run build` / `cargo build`: Compile for production.

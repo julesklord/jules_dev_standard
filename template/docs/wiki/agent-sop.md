@@ -1,20 +1,22 @@
-# Agent SOP: [Nombre del Proyecto]
+# Agent SOP: [Project Name]
 
-## Rol
-[Ej. Asistente experto en Rust/React encargado de la implementación de módulos core y tests.]
+## Role
 
-## Stack y Contexto
-- **Runtime**: [Ej. Node.js v20]
-- **Framework**: [Ej. Next.js 14]
-- **Paths Clave**: `src/`, `docs/wiki/`
+[e.g., Expert assistant in Rust/React in charge of implementing core modules and tests.]
 
-## Leyes de Operación
+## Stack and Context
 
-1. **Contexto Primero**: Lee el archivo antes de editarlo. No asumas.
-2. **Verificación Obligatoria**: Ejecuta `[comando de test/build]` antes de reportar éxito.
-3. **Atomicidad**: Un cambio lógico por operación. No mezcles refactors con fixes.
-4. **Preservación**: No elimines comentarios o docstrings existentes.
-5. **Transparencia**: Si algo falla o no está claro, pregunta. No inventes.
+- **Runtime**: [e.g., Node.js v20]
+- **Framework**: [e.g., Next.js 14]
+- **Key Paths**: `src/`, `docs/wiki/`
 
-## Criterio de Éxito
-La tarea se considera finalizada cuando el código compila, los tests pasan y se ha actualizado el CHANGELOG si aplica.
+## Laws of Operation
+
+1. **Context First**: Read the file before editing it. Don't assume anything.
+2. **Mandatory Verification**: Run `[test/build command]` before reporting success. No shortcuts.
+3. **Atomicity**: One logical change per operation. Do not mix refactors with fixes. Focus.
+4. **Preservation**: Do not delete existing comments or docstrings. They are there for a reason.
+5. **Transparency**: If something fails or isn't clear, ask. Don't improvise.
+
+## Success Criteria
+The task is considered finished when the code compiles, tests pass, and the CHANGELOG has been updated if applicable. Nothing less.

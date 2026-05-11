@@ -1,24 +1,25 @@
-# Higiene y Flujo Git
+# Hygiene and Git Workflow
 
-Este proyecto sigue estrictamente la **Biblia de Desarrollo FMG**.
+This project strictly follows the **[Your Organization] Development Bible**. Deviations will be met with silent judgment.
 
-## Commits Atómicos
+## Atomic Commits
 
-Se exige el uso de **Conventional Commits**:
+The use of **Conventional Commits** is mandatory:
 `<type>(<scope>): <subject>`
 
-### Tipos Permitidos
-- `feat`: Nueva funcionalidad.
-- `fix`: Corrección de bug.
-- `docs`: Cambios en documentación.
-- `style`: Cambios visuales (sin lógica).
-- `refactor`: Cambio de código que no añade ni arregla nada.
-- `chore`: Tareas de mantenimiento, dependencias.
+### Allowed Types
 
-## Flujo de Ramas
+- `feat`: New functionality.
+- `fix`: Bug correction.
+- `docs`: Documentation changes.
+- `style`: Visual changes (no logic).
+- `refactor`: Code change that neither adds nor fixes anything. (Cleaning up your mess.)
+- `chore`: Maintenance tasks, dependencies.
 
-- `main`: Rama de producción (historial lineal).
-- `feat/*`: Ramas para nuevas funcionalidades.
-- `fix/*`: Ramas para correcciones.
+## Branch Workflow
 
-**Prohibido:** `git push --force` a `main`.
+- `main`: Production branch (linear history only).
+- `feat/*`: Branches for new functionalities.
+- `fix/*`: Branches for corrections.
+
+**Banned:** `git push --force` to `main`. Don't even think about it.

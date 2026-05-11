@@ -1,23 +1,27 @@
-# Arquitectura y Decisiones (ADRs)
+# Architecture and Decisions (ADRs)
 
-Este documento registra la arquitectura del sistema y las Decisiones de Diseño (Architecture Decision Records).
+This document records the system architecture and Design Decisions (Architecture Decision Records). Because history matters.
 
-## Resumen del Sistema
+## System Overview
 
-[Descripción de alto nivel]
+[High-level description. What makes this thing tick.]
 
 ## ADRs
 
-### ADR 0001: [Título]
-**Estado**: Propuesto/Aceptado/Supersedido  
-**Fecha**: AAAA-MM-DD  
+### ADR 0001: [Title]
 
-#### Contexto
-[Problema o necesidad técnica]
+**Status**: Proposed / Accepted / Superseded  
+**Date**: YYYY-MM-DD  
 
-#### Decisión
-[Qué se decidió y por qué]
+#### Context
 
-#### Consecuencias
-- **Positivas**: [Efectos beneficiosos]
-- **Negativas**: [Deuda técnica o limitaciones]
+[Technical problem or need. Why are we even doing this?]
+
+#### Decision
+
+[What was decided and why. Logic dictates.]
+
+#### Consequences
+
+- **Positive**: [Beneficial effects. The good stuff.]
+- **Negative**: [Technical debt or limitations. The reality.]

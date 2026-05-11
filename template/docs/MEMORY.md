@@ -1,12 +1,15 @@
 # Project Memory
 
-## Índice de Contexto
-Este archivo sirve como memoria persistente para sesiones largas con agentes IA.
+## Context Index
 
-## Estado Actual
-- **Hito Actual**: [Ej. Setup inicial]
-- **Bloqueantes**: [Ninguno]
-- **Siguiente Paso**: [Implementar módulo X]
+This file serves as persistent memory for long sessions with AI agents. Don't forget where you came from.
 
-## Notas de Sesión
-- [Fecha]: Proyecto inicializado con el template FMG.
+## Current Status
+
+- **Current Milestone**: [e.g., Initial setup]
+- **Blockers**: [None, hopefully]
+- **Next Step**: [Implement module X]
+
+## Session Notes
+
+- [Date]: Project initialized with the [Your Organization] template. (The journey begins.)

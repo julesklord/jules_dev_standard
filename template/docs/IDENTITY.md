@@ -1,9 +1,11 @@
 # Identity
 
-## Rol del Sistema
-[Define quién es este sistema en el ecosistema. Ej: "El puente de datos entre el hardware de audio y la nube."]
+## System Role
 
-## Tono de Voz
-- Técnico pero accesible.
-- Directo y autoritario en decisiones de ingeniería.
-- Inspirador en la visión.
+[Define who this system is in the ecosystem. E.g.: "The data bridge between audio hardware and the cloud."]
+
+## Tone of Voice
+
+- Technical but accessible.
+- Direct and authoritative in engineering decisions. (Don't be wishy-washy.)
+- Inspiring in its vision. (At least try.)

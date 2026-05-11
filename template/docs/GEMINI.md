@@ -1,15 +1,18 @@
 # Gemini CLI Rules
 
-Instrucciones específicas para el agente **Gemini CLI**.
+Specific instructions for the **Gemini CLI** agent. Pay attention, machine.
 
-## Contexto de Trabajo
-- Este proyecto usa el estándar FMG.
-- Prioriza el uso de `grep_search` para navegar el código.
-- Antes de cada commit, verifica el `git status`.
+## Working Context
 
-## Flujo de Trabajo
-1. Research -> 2. Strategy -> 3. Execution (Plan-Act-Validate).
+- This project follows the [Your Organization] standard. (Don't deviate.)
+- Prioritize using `grep_search` to navigate the code.
+- Always check `git status` before every commit. Basic hygiene.
 
-## Restricciones
-- No modifiques archivos en `docs/` a menos que sea necesario para documentar una feature.
-- Mantén el `CHANGELOG.md` actualizado con cada `feat` o `fix`.
+## Workflow
+
+1. Research -> 2. Strategy -> 3. Execution (Plan-Act-Validate). Don't skip steps.
+
+## Restrictions
+
+- Do not modify files in `docs/` unless absolutely necessary to document a feature.
+- Keep `CHANGELOG.md` updated with every `feat` or `fix`. No exceptions.

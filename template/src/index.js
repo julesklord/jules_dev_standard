@@ -1,2 +1,2 @@
-// Placeholder para el código fuente inicial
-console.log("FMG Standard Repository Initialized.");
+// Placeholder for the initial source code
+console.log("[Your Organization] Standard Repository Initialized.");

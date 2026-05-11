@@ -1,24 +1,25 @@
 # FMG Development Standard
 
-> El estándar definitivo para la creación y gestión de repositorios en la era de la IA.
+> The ultimate standard for creating and managing repositories in the AI era. Because "winging it" isn't a strategy, it's a tragedy.
 
-Este repositorio es la fuente de verdad del ecosistema **Fearless Media Group (FMG)** para la ingeniería de software moderna. Combina la autoridad teórica con herramientas prácticas para acelerar el desarrollo asistido por IA manteniendo la máxima higiene técnica.
+This repository is the single source of truth for the **Fearless Media Group (FMG)** ecosystem. We combine theoretical authority with practical tools to accelerate AI-assisted development while maintaining maximum technical hygiene. We're trying to keep the codebase from becoming a dumpster fire, basically.
 
-## Contenido del Repositorio
+## What's in here?
 
-- [**FMG-REPO-BIBLE.md**](./FMG-REPO-BIBLE.md): El manifiesto técnico y conjunto de leyes que rigen todos nuestros proyectos.
-- [**index.html**](./index.html): Visualizador interactivo de la Biblia y Landing Page del estándar.
-- [**/template**](./template/): Directorio "boilerplate" listo para ser copiado. Contiene la estructura mínima obligatoria (Código + Docs + AI SOPs).
+- [**FMG-REPO-BIBLE.md**](./FMG-REPO-BIBLE.md): The technical manifesto and the set of laws governing all our projects. Read it or suffer the consequences (mostly just bad code).
+- [**index.html**](./index.html): An interactive viewer for the Bible and the standard's Landing Page. For those who prefer pretty buttons over raw markdown.
+- [**/template**](./template/): A boilerplate directory ready to be hijacked. It contains the minimum mandatory structure (Code + Docs + AI SOPs). No excuses for messy folders.
 
-## Cómo usar este estándar
+## How to use this thing
 
-### Para Consultar
-Abre `index.html` en tu navegador para una experiencia de lectura optimizada o lee `FMG-REPO-BIBLE.md` directamente.
+### Just Browsing?
+Open `index.html` in your browser for an optimized reading experience, or just read `FMG-REPO-BIBLE.md` directly if you're a purist.
 
-### Para Iniciar un Proyecto
-1. Clona este repositorio o descarga el contenido de `/template`.
-2. Copia el contenido de `/template` a la raíz de tu nuevo proyecto.
-3. Sigue el checklist de **Creación de Nuevo Repositorio** en la Biblia.
+### Starting a New Project?
+
+1. Clone this repo or just download the `/template` contents.
+2. Copy the contents of `/template` to the root of your new project. Try not to break anything.
+3. Follow the **New Repository Creation** checklist in the Bible. Yes, checklists are boring, but so is debugging for 3 hours.
 
 ---
-*Logic dictates. AI executes.*
+*Logic dictates. AI executes. Humankind wonders where it all went wrong.*
